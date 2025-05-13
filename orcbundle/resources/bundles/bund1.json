@@ -28,7 +28,16 @@
                 "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.id))",
                 "json": {},
                 "output":{},
-                "headers":{}
+                "headers":{},
+                "metadata":{
+                    "description": "Encontra um post",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "The id of the post you need to find. It is a string"
+                        }
+                    ]
+                }
             },
             "filter_post_toUser": {
                 "name": "filter_post_toUser",

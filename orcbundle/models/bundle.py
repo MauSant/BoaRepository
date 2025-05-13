@@ -5,6 +5,8 @@ from typing import Any, Literal, Optional
 
 from pydantic import BaseModel
 
+
+
 class ActionTypes(StrEnum):
     HTTP = "HTTP"
     WORKFLOW = "WORKFLOW"
@@ -17,8 +19,16 @@ class HTTPMethods(StrEnum):
     DELETE = "DELETE" 
     PATCH = "PATCH" 
 
+class UserInputMetadata(BaseModel):
+    name: str
+    description: str = ""
+
+class Metadata(BaseModel):
+    description: str = ""
+    user_inputs: list[UserInputMetadata] = []
 class Action(BaseModel):
     name: str
+    metadata: Metadata = None
 
 
 class HttpAction(Action):
