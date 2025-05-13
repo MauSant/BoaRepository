@@ -1,0 +1,66 @@
+{
+    "name": "bund2",
+    "steps": [
+        {
+            "name": "Procurar post",
+            "actions": [
+                "find_post"
+            ]
+        },
+        {
+            "name": "Filtrar posts pelo usuario",
+            "actions": [
+                "filter_post_toUser"
+            ]
+        },
+        {
+            "name": "chamar bundle de compra",
+            "actions": [
+                "c"
+            ]
+        }
+    ],
+    "services": {
+        "comer pipoca": {
+            "name": "find_post",
+            "action_type": "HTTP",
+            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.id))",
+            "http_method": "GET",
+            "mock": {},
+            "headers": {},
+            "query": {},
+            "form_data": {},
+            "json": {},
+            "output": {}
+        },
+        "mandar correio": {
+            "name": "filter_post_toUser",
+            "action_type": "HTTP",
+            "url": "https://jsonplaceholder.typicode.com/posts",
+            "http_method": "GET",
+            "mock": {},
+            "headers": {},
+            "query": {
+                "userId": "1"
+            },
+            "form_data": {},
+            "json": {},
+            "output": {}
+        },
+        "trabalhar": {
+            "name": "c",
+            "action_type": "HTTP",
+            "url": "",
+            "http_method": "GET",
+            "mock": {
+                "details": "any mock act C"
+            },
+            "headers": {},
+            "query": {},
+            "form_data": {},
+            "json": {},
+            "output": {}
+        }
+    },
+    "auth": ""
+}
