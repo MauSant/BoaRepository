@@ -21,7 +21,7 @@
         }
     ],
     "services": {
-        "comer pipoca": {
+        "comer_pipoca": {
             "name": "find_post_pipoca",
             "action_type": "HTTP",
             "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.find_post_pipoca.id))",
@@ -42,7 +42,7 @@
                     ]
                 }
         },
-        "mandar correio": {
+        "mandar_correio": {
             "name": "filter_post_toUser",
             "action_type": "HTTP",
             "url": "https://jsonplaceholder.typicode.com/posts",

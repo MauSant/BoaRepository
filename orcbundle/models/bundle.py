@@ -60,3 +60,8 @@ class Bundle(BaseModel):
     steps: list[ActionInSteps] 
     services: dict[str, HttpAction]
     auth: Optional[str] = "" #TODO
+
+
+class OrcRequest(BaseModel):
+    user_input: dict[str, Any]
+    main_bundle: Bundle

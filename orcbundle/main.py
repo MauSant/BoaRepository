@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from orcbundle.routers.bundle_router import bundle_router
-#From 1th
+from orcbundle.routers.theorc_router import theorc_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,6 +15,9 @@ async def lifespan(app: FastAPI):
 app = FastAPI()
 
 app.include_router(bundle_router)
+app.include_router(theorc_router)
+
+
 origins = [
     "http://127.0.0.1:8000",
     "https://127.0.0.1:8000 ",
