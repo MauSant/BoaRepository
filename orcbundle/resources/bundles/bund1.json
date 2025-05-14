@@ -25,7 +25,7 @@
                 "name": "find_post",
                 "action_type":"HTTP",
                 "http_method": "GET",
-                "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.id))",
+                "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.find_post.id))",
                 "json": {},
                 "output":{},
                 "headers":{},
@@ -35,6 +35,10 @@
                         {
                             "name": "id",
                             "description": "The id of the post you need to find. It is a string"
+                        },
+                        {
+                            "name": "env_id",
+                            "description": "The id of the Playground environment"
                         }
                     ]
                 }
@@ -48,7 +52,11 @@
                     "userId": "1"
                 },
                 "output":{},
-                "headers":{}
+                "headers":{},
+                "metadata":{
+                    "description": "Encontra um post",
+                    "user_inputs": []
+                }
             },
             "c": {
                 "name": "c",
@@ -58,7 +66,11 @@
                 "url":"",
                 "parameters":{},
                 "output":{},
-                "headers":{}
+                "headers":{},
+                "metadata":{
+                    "description": "Encontra um post",
+                    "user_inputs": []
+                }
 
             }
         },

@@ -22,16 +22,25 @@
     ],
     "services": {
         "comer pipoca": {
-            "name": "find_post",
+            "name": "find_post_pipoca",
             "action_type": "HTTP",
-            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.id))",
+            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.find_post_pipoca.id))",
             "http_method": "GET",
             "mock": {},
             "headers": {},
             "query": {},
             "form_data": {},
             "json": {},
-            "output": {}
+            "output": {},
+            "metadata":{
+                    "description": "Encontra um post",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "The id of the post you need to find. It is a string"
+                        }
+                    ]
+                }
         },
         "mandar correio": {
             "name": "filter_post_toUser",
@@ -45,7 +54,11 @@
             },
             "form_data": {},
             "json": {},
-            "output": {}
+            "output": {},
+            "metadata":{
+                    "description": "Encontra um post",
+                    "user_inputs": []
+                }
         },
         "trabalhar": {
             "name": "c",
@@ -59,7 +72,11 @@
             "query": {},
             "form_data": {},
             "json": {},
-            "output": {}
+            "output": {},
+            "metadata":{
+                    "description": "Encontra um post",
+                    "user_inputs": []
+                }
         }
     },
     "auth": ""
