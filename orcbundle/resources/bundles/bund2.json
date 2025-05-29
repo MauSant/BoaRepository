@@ -24,7 +24,7 @@
         "comer_pipoca": {
             "name": "find_post_pipoca",
             "action_type": "HTTP",
-            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.find_post_pipoca.id))",
+            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.comer_pipoca.id))",
             "http_method": "GET",
             "mock": {},
             "headers": {},

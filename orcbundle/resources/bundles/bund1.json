@@ -54,7 +54,7 @@
                 "output":{},
                 "headers":{},
                 "metadata":{
-                    "description": "Encontra um post",
+                    "description": "Encontra varios posts",
                     "user_inputs": []
                 }
             },

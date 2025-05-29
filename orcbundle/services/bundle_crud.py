@@ -4,7 +4,9 @@ import json
 import os
 from typing import Any, Dict, List, Optional
 
+from orcbundle.models.bundle_from_publication import PublicationData
 from orcbundle.utils.general import get_project_root
+from orcbundle.models.bundle import Bundle
 
 class BundleCRUD:
     def __init__(self):
@@ -27,6 +29,27 @@ class BundleCRUD:
         with open(file_path, 'w') as f:
             json.dump(item, f, indent=4)
         return item
+    
+    def build_from_publication(self, publication_data:PublicationData) -> Bundle:
+        activities = publication_data.activities
+        steps_raw = [
+            {
+                "name":act.alias, #TODO: This needs to be the sequence of actions name
+                "actions": [act.name]
+            } for act in activities 
+        ]
+        service_raw = {act.name: act.json for act in activities}
+        
+        
+        bundle_raw = {
+            #TODO Add author, version and description for process
+            "name":publication_data.process_info.title,
+            "steps": steps_raw,
+            "services":service_raw
+        }
+        bundle = Bundle.model_validate(bundle_raw)
+        self.create(bundle.model_dump())
+        return bundle
 
     def read_all(self) -> List[Dict[str, Any]]:
         """Read all items from the directory"""

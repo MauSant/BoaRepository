@@ -12,7 +12,9 @@ async def lifespan(app: FastAPI):
     #TODO Add database here
     yield
 
-app = FastAPI()
+app = FastAPI(
+    title="Boa Repository"
+)
 
 app.include_router(bundle_router)
 app.include_router(theorc_router)
