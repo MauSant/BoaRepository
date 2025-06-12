@@ -6,6 +6,8 @@ import uvicorn
 
 from orcbundle.routers.bundle_router import bundle_router
 from orcbundle.routers.theorc_router import theorc_router
+from orcbundle.routers.domain_router import domain_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -18,6 +20,8 @@ app = FastAPI(
 
 app.include_router(bundle_router)
 app.include_router(theorc_router)
+app.include_router(domain_router)
+
 
 
 origins = [

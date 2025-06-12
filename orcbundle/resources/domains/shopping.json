@@ -1,0 +1,84 @@
+{
+    "name": "Shopping",
+    "id": "online_shopping1",
+    "roles": [
+        {
+            "name":"Fornecedor",
+            "id": "suplier",
+            "activities":[
+                {
+                    "name":"Envio de produto",
+                    "id": "product_shipment",
+                    "services": {
+                        "inter":{
+                            "name": "Checar limite de credito inter",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "itau":{
+                            "name": "Checar limite de credito itau",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "bradesco":{
+                            "name": "Checar limite de credito Bradesco",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+            ]
+            
+            
+        }
+    ]
+
+}

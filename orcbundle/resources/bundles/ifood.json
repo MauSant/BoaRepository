@@ -1,5 +1,5 @@
 {
-    "name": "bund2",
+    "name": "ifood",
     "steps": [
         {
             "name": "Procurar post",
@@ -21,10 +21,10 @@
         }
     ],
     "services": {
-        "comer_pipoca": {
-            "name": "find_post_pipoca",
+        "buy_food_ifood": {
+            "name": "Efetuar Pedido de Comida",
             "action_type": "HTTP",
-            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.comer_pipoca.id))",
+            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.buy_food_ifood.id))",
             "http_method": "GET",
             "mock": {},
             "headers": {},
@@ -33,17 +33,17 @@
             "json": {},
             "output": {},
             "metadata":{
-                    "description": "Encontra um post",
+                    "description": "Cria pedido de Comida",
                     "user_inputs": [
                         {
                             "name": "id",
-                            "description": "The id of the post you need to find. It is a string"
+                            "description": "Id do usuario que fez a compra"
                         }
                     ]
                 }
         },
-        "mandar_correio": {
-            "name": "filter_post_toUser",
+        "send_food_ifood": {
+            "name": "Enviar Comida",
             "action_type": "HTTP",
             "url": "https://jsonplaceholder.typicode.com/posts",
             "http_method": "GET",
@@ -56,11 +56,20 @@
             "json": {},
             "output": {},
             "metadata":{
-                    "description": "Encontra um post",
-                    "user_inputs": []
+                    "description": "Enviar comida para o endereço do cliente",
+                    "user_inputs": [
+                        {
+                            "name": "Endereço do usuario",
+                            "description": "Endereço do usuario que fez a compra"
+                        },
+                        {
+                            "name": "Endereço do restaurante",
+                            "description": "Endereço do restaurante que fez a compra"
+                        }
+                    ]
                 }
         },
-        "trabalhar": {
+        "trabalhar_ifood": {
             "name": "c",
             "action_type": "HTTP",
             "url": "",

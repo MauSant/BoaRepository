@@ -1,0 +1,156 @@
+{
+    "name": "Supply Chain Financing",
+    "steps": [
+        {
+            "name": "ticket de compra",
+            "actions": [
+                "purchase_order_created"
+            ]
+        },
+        {
+            "name": "Checa limite credito",
+            "actions": [
+                "credit_limit"
+            ]
+        },
+        {
+            "name": "Solicita ao fornecedor item",
+            "actions": [
+                "request_supplier"
+            ]
+        },
+        {
+            "name": "Solicita a logistica entrega no endereço do usuario",
+            "actions": [
+                "request_delivery"
+            ]
+        },
+        {
+            "name": "Solicita a logistica entrega no endereço do usuario",
+            "actions": [
+                "request_payment"
+            ]
+        }
+    ],
+    "services": {
+        "purchase_order_created": {
+            "name": "ticket de compra",
+            "metadata": {
+                "description": "cria ticket de compra",
+                "user_inputs": [
+                    {
+                        "name": "id",
+                        "description": "Id do usuario que fez a compra"
+                    },
+                    {
+                        "name": "env_id",
+                        "description": "The id of the Playground environment"
+                    }
+                ]
+            },
+            "action_type": "HTTP",
+            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.purchase_order_created.id))",
+            "http_method": "GET",
+            "mock": {},
+            "headers": {},
+            "query": {},
+            "form_data": {},
+            "json": {},
+            "output": {}
+        },
+        "credit_limit": {
+            "name": "credit_limit",
+            "metadata": {
+                "description": "Encontra um post",
+                "user_inputs": [
+                    {
+                        "name": "id",
+                        "description": "Id do usuario que fez a compra"
+                    }
+                ]
+            },
+            "action_type": "HTTP",
+            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.credit_limit.id))",
+            "http_method": "GET",
+            "mock": {},
+            "headers": {},
+            "query": {},
+            "form_data": {},
+            "json": {},
+            "output": {}
+        },
+        "request_supplier": {
+                "name": "request_supplier",
+                "action_type":"HTTP",
+                "http_method": "GET",
+                "url": "https://jsonplaceholder.typicode.com/posts",
+                "query": {
+                    "userId": "FIND(user_input.request_supplier.id)"
+                },
+                "output":{},
+                "headers":{},
+                "metadata":{
+                    "description": "Solicita ao fornecedor item",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "Id do usuario que fez a compra"
+                        },
+                        {
+                            "name": "item_id",
+                            "description": "Id do item"
+                        }
+                    ]
+                }
+        },
+        "request_delivery": {
+                "name": "request_delivery",
+                "action_type":"HTTP",
+                "http_method": "GET",
+                "url": "https://jsonplaceholder.typicode.com/posts",
+                "query": {
+                    "userId": "FIND(user_input.request_delivery.id)"
+                },
+                "output":{},
+                "headers":{},
+                "metadata":{
+                    "description": "Solicita a logistica entrega no endereço do usuario",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "Id do usuario que fez a compra"
+                        },
+                        {
+                            "name": "user_address",
+                            "description": "Endereço do Usuario"
+                        }
+                    ]
+                }
+        },
+        "request_payment": {
+                "name": "request_payment",
+                "action_type":"HTTP",
+                "http_method": "GET",
+                "url": "https://jsonplaceholder.typicode.com/posts",
+                "query": {
+                    "userId": "FIND(user_input.request_payment.id)"
+                },
+                "output":{},
+                "headers":{},
+                "metadata":{
+                    "description": "Solicita ao Banco pagamento pela compra realizada",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "Id do usuario que fez a compra"
+                        },
+                        {
+                            "name": "id_ticket_compra",
+                            "description": "Id do ticket de compra gerado"
+                        }
+                    ]
+                }
+        }
+    },
+    "auth": ""
+}

@@ -1,0 +1,95 @@
+ {
+        "name": "Itau Banco",
+        "steps": [
+            {
+                "name": "Procurar post",
+                "actions": [
+                    "a"
+                ]
+            },
+            {
+                "name": "Filtrar posts pelo usuario",
+                "actions": [
+                    "a"
+                ]
+            },
+            {
+                "name": "chamar bundle de compra",
+                "actions": [
+                    "c"
+                ]
+            }
+        ],
+        "services": {
+            "credit_limit_itau": {
+                "name": "Checar limite de credito",
+                "metadata": {
+                    "description": "Checa o limite de credito de um Usuario",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "Id do usuario que se deseja verificar credito"
+                        }
+                    ]
+                },
+                "action_type": "HTTP",
+                "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.credit_limit.id))",
+                "http_method": "GET",
+                "mock": {},
+                "headers": {},
+                "query": {},
+                "form_data": {},
+                "json": {},
+                "output": {}
+            },
+            "create_payment_contract_itau": {
+                "name": "Contratar Pagamento",
+                "action_type":"HTTP",
+                "http_method": "GET",
+                "url": "https://jsonplaceholder.typicode.com/posts",
+                "query": {
+                    "userId": "FIND(user_input.request_payment.id)"
+                },
+                "output":{},
+                "headers":{},
+                "metadata":{
+                    "description": "Contrata Pagamento",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "Id do usuario que fez a compra"
+                        },
+                        {
+                            "name": "id_ticket_compra",
+                            "description": "Id do ticket de compra gerado"
+                        }
+                    ]
+                }
+            },
+            "request_payment_itau": {
+                "name": "Requisitar pagamento",
+                "action_type":"HTTP",
+                "http_method": "GET",
+                "url": "https://jsonplaceholder.typicode.com/posts",
+                "query": {
+                    "userId": "FIND(user_input.request_payment.id)"
+                },
+                "output":{},
+                "headers":{},
+                "metadata":{
+                    "description": "Solicita ao Banco pagamento pela compra realizada",
+                    "user_inputs": [
+                        {
+                            "name": "id",
+                            "description": "Id do usuario que fez a compra"
+                        },
+                        {
+                            "name": "id_ticket_compra",
+                            "description": "Id do ticket de compra gerado"
+                        }
+                    ]
+                }
+            }
+        },
+        "auth": ""
+    }
