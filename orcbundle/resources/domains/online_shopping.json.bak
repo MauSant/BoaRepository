@@ -1,5 +1,5 @@
 {
-    "name": "Compras Online",
+    "name": "Lojas Online",
     "id": "online_shopping",
     "roles": [
         {
@@ -22,7 +22,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cea_sent_payment_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -43,7 +43,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.riachuelo_sent_payment_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -64,7 +64,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.Gucci_sent_payment_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -91,7 +91,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cea_payment_status.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -112,7 +112,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.riachuelo_payment_status.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -133,7 +133,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gucci_payment_status.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -160,7 +160,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.correios_sent_delivery_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -181,7 +181,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.fedex_sent_delivery_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -202,7 +202,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.loggi_sent_delivery_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -229,7 +229,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.correios_receive_delivery_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -250,7 +250,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.fedex_receive_delivery_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -271,7 +271,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.loggi_receive_delivery_data.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -304,7 +304,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_paypal.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -325,7 +325,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_pagarme.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -352,7 +352,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_payment_data_process_paypal.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -373,7 +373,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_payment_data_process_pagarme.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -400,7 +400,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_process_paypal.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -421,7 +421,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_process_pagarme.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -449,7 +449,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_data_tocheck_paypal.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -470,7 +470,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_data_tocheck_pagarme.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -497,7 +497,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_process_data_fromcheck_paypal.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -518,7 +518,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_process_data_fromcheck_pagarme.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -546,7 +546,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_process_status_result_paypal.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -567,7 +567,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_process_status_result_pagarme.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -601,7 +601,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_forprocess_cielo.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -622,7 +622,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_forprocess_stone.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -649,7 +649,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.acquirer_sent_payment_data_tovalidation_cielo.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -670,7 +670,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.acquirer_sent_payment_data_tovalidation_stone.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -697,7 +697,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_process_fromvalidation_cielo.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -718,7 +718,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_payment_data_process_fromvalidation_stone.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -746,7 +746,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_data_toprocess_cielo.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -767,7 +767,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_data_toprocess_stone.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -801,7 +801,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive__data_fromprocess_forcheck_rudder.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -822,7 +822,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive__data_fromprocess_forcheck_netrin.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -849,7 +849,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_check_result_rudder.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -870,7 +870,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.sent_check_result_netrin.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -904,7 +904,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_data_frompayment_visa.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -925,7 +925,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_data_frompayment_mastercard.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -952,7 +952,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_payment_data_tovalidation_visa.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -973,7 +973,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_payment_data_tovalidation_mastercard.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1000,7 +1000,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_receive_payment_data_process_fromvalidation_visa.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1021,7 +1021,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_receive_payment_data_process_fromvalidation_mastercard.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1048,7 +1048,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_check_result_visa.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1069,7 +1069,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_check_result_mastercard.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1103,7 +1103,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_data_payment_fromvalidationt_Bradesco.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1124,7 +1124,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_data_payment_fromvalidationtsantander.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1151,7 +1151,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_payment_data_tovalidation_Bradesco.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1172,7 +1172,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_payment_data_tovalidation_santander.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1206,7 +1206,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_data_payment_fromvalidationt_correios.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1227,7 +1227,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.receive_data_payment_fromvalidationt_loggi.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1254,7 +1254,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_inter.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_payment_data_tovalidation_correios.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},
@@ -1275,7 +1275,7 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.check_limit_itau.id))",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.flag_sent_payment_data_tovalidation_loggi.id))",
                             "http_method": "GET",
                             "mock": {},
                             "headers": {},

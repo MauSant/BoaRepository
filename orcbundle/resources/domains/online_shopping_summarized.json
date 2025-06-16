@@ -1,0 +1,535 @@
+{
+    "name": "Online Shopping",
+    "id": "online_shopping_summerized",
+    "roles": [
+        {
+            "name":"Loja Virtual",
+            "id": "virtual_store",
+            "activities":[
+                {
+                    "name":"1-Processamento do pagamento pela Loja virtual",
+                    "id": "process_payment_data",
+                    "services": {
+                        "cea_process_payment_data":{
+                            "name": "C & A",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "https://jsonplaceholder.typicode.com/posts",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {
+                                "title": "boa2",
+                                "body": "boa2 - Test to POST",
+                                "userId": 1
+                            },
+                            "output": {}
+                        },
+                        "riachuelo_process_payment_data":{
+                            "name": "Riachuelo",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.riachuelo_process_payment_data.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "gucci_process_payment_data":{
+                            "name": "Gucci",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gucci_process_payment_data.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"8- Realizar entrega pela Loja Online",
+                    "id": "delivery_product",
+                    "services": {
+                        "cea_delivery_product":{
+                            "name": "C & A",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cea_delivery_product.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "riachuelo_delivery_product":{
+                            "name": "Riachuelo",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.riachuelo_delivery_product.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "gucci_delivery_product":{
+                            "name": "Gucci",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gucci_delivery_product.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+              
+            ]
+        },
+        {
+            "name":"Gateway de Pagamento",
+            "id": "payment_gateway",
+            "activities":[
+                {
+                    "name":"2- Processamento do Pagamento pelo gateway",
+                    "id": "gateway_processing",
+                    "services": {
+                        "paypal_gateway_processing":{
+                            "name": "PAYPAL",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.paypal_gateway_processing.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "pagarme_gateway_processing":{
+                            "name": "Pagar.me",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.pagarme_gateway_processing.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"6- Analise do Pagamento pelo Gateway",
+                    "id": "gateway_analysis",
+                    "services": {
+                        "gateway_analysis_paypal":{
+                            "name": "PAYPAL",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gateway_analysis_paypal.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "gateway_analysis_pagarme":{
+                            "name": "Pagar.me",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gateway_analysis_pagarme.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+               
+            ]
+        },
+        {
+            "name":"Adquirente",
+            "id": "acquirer",
+            "activities":[
+                {
+                    "name":"3- Validação do Pagamento Pelo Adquirente",
+                    "id": "validate_payment",
+                    "services": {
+                        "cielo_validate_payment":{
+                            "name": "CIELO",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cielo_validate_payment.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "stone_validate_payment":{
+                            "name": "STONE",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.stone_validate_payment.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+                              
+            ]
+        },
+        {
+            "name":"Antifraude",
+            "id": "anti_fraud",
+            "activities":[
+                {
+                    "name":"7- Analise do pagamento pelo antifraude",
+                    "id": "payment_analysis_antifraud",
+                    "services": {
+                        "rudder_payment_analisys_antifraud":{
+                            "name": "RUDDER",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.rudder_payment_analisys_antifraud.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "netrin_payment_analisys_antifraud":{
+                            "name": "NETRIN",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.netrin_payment_analisys_antifraud.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+               
+                
+            ]
+        },
+        {
+            "name":"Bandeira",
+            "id": "flag",
+            "activities":[
+                {
+                    "name":"4- Validação do Pagamento pela bandeira",
+                    "id": "flag_alalysis",
+                    "services": {
+                        "visa_flag_alalysis":{
+                            "name": "VISA",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.visa_flag_alalysis.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "mastercard_flag_alalysis":{
+                            "name": "MASTERCARD",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.mastercard_flag_alalysis.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+                
+                
+            ]
+        },
+        {
+            "name":"Emissor",
+            "id": "issuing",
+            "activities":[
+                {
+                    "name":"5- validação do pagamento pelo Emissor",
+                    "id": "issuing_validation_",
+                    "services": {
+                        "issuing_validation__Bradesco":{
+                            "name": "BRADESCO",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.issuing_validation__Bradesco.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "issuing_validation_santander":{
+                            "name": "SANTANDER",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.issuing_validation_santander.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name":"Transportadora",
+            "id": "transporter",
+            "activities":[
+                {
+                    "name":"9- Realizar Entrega pela transportadora",
+                    "id": "receive_data_payment_fromvalidationt",
+                    "services": {
+                        "delivery_item_correios":{
+                            "name": "CORREIOS",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.delivery_item_correios.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "delivery_item_loggi":{
+                            "name": "LOGGI",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.delivery_item_loggi.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+             
+                
+            ]
+        }
+    ]
+
+}

@@ -1,0 +1,60 @@
+{
+    "name": "test_refactor1",
+    "id": "online_shopping",
+    "roles": [
+        {
+            "name":"Loja Virtual",
+            "id": "virtual_store",
+            "activities":[
+                {
+                    "name":"C & A",
+                    "id": "cea",
+                    "services": {
+                        "cea_process_payment_data":{
+                            "name": "Processamento do pagamento pela Loja virtual",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cea_process_payment_data.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        },
+                        "cea_delivery_product":{
+                            "name": "C & A",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cea_delivery_product.id))",
+                            "http_method": "GET",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                }
+          
+    ]
+
+}
