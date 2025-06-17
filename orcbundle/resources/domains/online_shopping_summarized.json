@@ -105,8 +105,8 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "pedido_id": "ORD-12345",
-                                "id_gateway": "GW-TXN-1122",
+                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
                                 "endereco_entrega": {
                                     "cep": "22000-000",
                                     "logradouro": "Rua Exemplo, 123"
@@ -136,8 +136,8 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "pedido_id": "ORD-12345",
-                                "id_gateway": "GW-TXN-1122",
+                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
                                 "endereco_entrega": {
                                     "cep": "22000-000",
                                     "logradouro": "Rua Exemplo, 123"
@@ -145,6 +145,62 @@
                                 "itens": [
                                     {"produto_id": "PROD-001", "quantidade": 2}
                                 ]
+                            },
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"10- Finalizar Compra",
+                    "id": "end_buy",
+                    "services": {
+                        "cea_end_buy":{
+                            "name": "C & A",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/cea/end_buy",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
+                                "status_entrega": "FIND(action_outputs.delivery_item_correios.status)"
+                            },
+                            "output": {}
+                        },
+                        "riachuelo_end_buy":{
+                            "name": "Riachuelo",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/riachuelo/end_buy",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
+                                "status_entrega": "FIND(action_outputs.delivery_item_correios.status"
                             },
                             "output": {}
                         }
@@ -233,13 +289,20 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gateway_analysis_paypal.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/gateway_payment/paypal/analysis",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation_Bradesco.codigo_autorizacao_final)",
+                                "dados_risco": {
+                                    "score_adquirente": 75,
+                                    "historico_cliente": "novo"
+                                }
+                            },
                             "output": {}
                         },
                         "gateway_analysis_pagarme":{
@@ -254,13 +317,20 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gateway_analysis_pagarme.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/gateway_payment/paypal/analysis",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation_Bradesco.codigo_autorizacao_final)",
+                                "dados_risco": {
+                                    "score_adquirente": 75,
+                                    "historico_cliente": "novo"
+                                }
+                            },
                             "output": {}
                         }
                     }
@@ -351,13 +421,18 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.rudder_payment_analisys_antifraud.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/atifraud/rudder/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "requisicao_antifraude": "AF-REQ-7788",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "email_cliente": "cliente@exemplo.com",
+                                "ip": "189.222.111.44"
+                            },
                             "output": {}
                         },
                         "netrin_payment_analisys_antifraud":{
@@ -372,13 +447,18 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.netrin_payment_analisys_antifraud.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/atifraud/netrin/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "requisicao_antifraude": "AF-REQ-7788",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "email_cliente": "cliente@exemplo.com",
+                                "ip": "189.222.111.44"
+                            },
                             "output": {}
                         }
                     }
@@ -459,7 +539,7 @@
                     "name":"5- validação do pagamento pelo Emissor",
                     "id": "issuing_validation_",
                     "services": {
-                        "issuing_validation__Bradesco":{
+                        "issuing_validation_Bradesco":{
                             "name": "BRADESCO",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
@@ -533,13 +613,19 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.delivery_item_correios.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/transporter/correios/delivery_item",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "dimensoes": {
+                                    "peso_kg": 0.5,
+                                    "largura_cm": 20
+                                }
+                            },
                             "output": {}
                         },
                         "delivery_item_loggi":{
@@ -554,13 +640,19 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.delivery_item_loggi.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/transporter/loggi/delivery_item",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "dimensoes": {
+                                    "peso_kg": 0.5,
+                                    "largura_cm": 20
+                                }
+                            },
                             "output": {}
                         }
                     }
