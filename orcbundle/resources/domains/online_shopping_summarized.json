@@ -22,15 +22,26 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "https://jsonplaceholder.typicode.com/posts",
+                            "url": "http://localhost:8003/virtual_store/cea/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
-                            "form_data": {
-                                "title": "boa2",
-                                "body": "boa2 - Test to POST",
-                                "userId": 1
+                            "form_data": {},
+                            "json": {
+                                "pedido_id": "ORD-12345",
+                                "valor_total": 1500.00,
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
+                                ],
+                                "cliente": {
+                                    "id": "CLI-7788",
+                                    "email": "cliente@exemplo.com"
+                                },
+                                "cartao": {
+                                    "numero": "**** **** **** 1234",
+                                    "validade": "12/2025"
+                                }
                             },
                             "output": {}
                         },
@@ -46,34 +57,27 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.riachuelo_process_payment_data.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/virtual_store/riachuelo/process_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
-                            "output": {}
-                        },
-                        "gucci_process_payment_data":{
-                            "name": "Gucci",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
+                            "json": {
+                                "pedido_id": "ORD-12345",
+                                "valor_total": 1500.00,
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
+                                ],
+                                "cliente": {
+                                    "id": "CLI-7788",
+                                    "email": "cliente@exemplo.com"
+                                },
+                                "cartao": {
+                                    "numero": "**** **** **** 1234",
+                                    "validade": "12/2025"
+                                }
                             },
-                            "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gucci_process_payment_data.id))",
-                            "http_method": "GET",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {},
                             "output": {}
                         }
                     }
@@ -94,13 +98,23 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cea_delivery_product.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/virtual_store/cea/delivery_product",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "pedido_id": "ORD-12345",
+                                "id_gateway": "GW-TXN-1122",
+                                "endereco_entrega": {
+                                    "cep": "22000-000",
+                                    "logradouro": "Rua Exemplo, 123"
+                                },
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
+                                ]
+                            },
                             "output": {}
                         },
                         "riachuelo_delivery_product":{
@@ -115,34 +129,23 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.riachuelo_delivery_product.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/virtual_store/riachuelo/delivery_product",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
-                            "output": {}
-                        },
-                        "gucci_delivery_product":{
-                            "name": "Gucci",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
+                            "json": {
+                                "pedido_id": "ORD-12345",
+                                "id_gateway": "GW-TXN-1122",
+                                "endereco_entrega": {
+                                    "cep": "22000-000",
+                                    "logradouro": "Rua Exemplo, 123"
+                                },
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
                                 ]
                             },
-                            "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.gucci_delivery_product.id))",
-                            "http_method": "GET",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {},
                             "output": {}
                         }
                     }
@@ -170,13 +173,19 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.paypal_gateway_processing.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/gateway_payment/paypal/process_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "gateway_request_id": "GW-paypal-20230617",
+                                "transacao_id": "FIND(action_outputs.cea_process_payment_data.transacao_id)",
+                                "valor": 1500.00,
+                                "cartao_token": "FIND(action_outputs.cea_process_payment_data.cartao_token)",
+                                "parcelas": 3
+                            },
                             "output": {}
                         },
                         "pagarme_gateway_processing":{
@@ -191,13 +200,19 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.pagarme_gateway_processing.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/gateway_payment/pagarme/process_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "gateway_request_id": "GW-pagarme-20230617",
+                                "transacao_id": "FIND(action_outputs.cea_process_payment_data.transacao_id)",
+                                "valor": 1500.00,
+                                "cartao_token": "FIND(action_outputs.cea_process_payment_data.cartao_token)",
+                                "parcelas": 3
+                            },
                             "output": {}
                         }
                     }
@@ -273,13 +288,17 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.cielo_validate_payment.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/aquirer/cielo/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "requisicao_adquirente": "ADQ-REQ-4455",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "valor": 1500.00
+                            },
                             "output": {}
                         },
                         "stone_validate_payment":{
@@ -294,13 +313,17 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.stone_validate_payment.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/aquirer/stone/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "requisicao_adquirente": "ADQ-REQ-4455",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "valor": 1500.00
+                            },
                             "output": {}
                         }
                     }
@@ -384,13 +407,17 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.visa_flag_alalysis.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/flag/visa/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "requisicao_bandeira": "BAND-REQ-6677",
+                                "codigo_autorizacao": "FIND(action_outputs.cielo_validate_payment.autorizacao_adq)",
+                                "dados_cartao": "TOKEN-CC-5566"
+                            },
                             "output": {}
                         },
                         "mastercard_flag_alalysis":{
@@ -405,13 +432,17 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.mastercard_flag_alalysis.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/flag/mastercard/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json":{
+                                "requisicao_bandeira": "BAND-REQ-6677",
+                                "codigo_autorizacao": "FIND(action_outputs.cielo_validate_payment.autorizacao_adq)",
+                                "dados_cartao": "TOKEN-CC-5566"
+                            },
                             "output": {}
                         }
                     }
@@ -440,13 +471,17 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.issuing_validation__Bradesco.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/issuing/bradesco/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "requisicao_emissor": "EMI-REQ-9911",
+                                "autorizacao_bandeira": "FIND(action_outputs.visa_flag_alalysis.autorizacao_bandeira)",
+                                "valor_parcela": 500.00
+                            },
                             "output": {}
                         },
                         "issuing_validation_santander":{
@@ -461,13 +496,17 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "CONCAT(https://jsonplaceholder.typicode.com/posts/, FIND(user_input.issuing_validation_santander.id))",
-                            "http_method": "GET",
+                            "url": "http://localhost:8003/issuing/santander/validate_payment",
+                            "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
-                            "json": {},
+                            "json": {
+                                "requisicao_emissor": "EMI-REQ-9911",
+                                "autorizacao_bandeira": "FIND(action_outputs.visa_flag_alalysis.autorizacao_bandeira)",
+                                "valor_parcela": 500.00
+                            },
                             "output": {}
                         }
                     }
