@@ -83,7 +83,7 @@
                     }
                 },
                 {
-                    "name":"8- Realizar entrega pela Loja Online",
+                    "name":"9- Realizar entrega pela Loja Online",
                     "id": "delivery_product",
                     "services": {
                         "cea_delivery_product":{
@@ -151,7 +151,7 @@
                     }
                 },
                 {
-                    "name":"10- Finalizar Compra",
+                    "name":"11- Finalizar Compra",
                     "id": "end_buy",
                     "services": {
                         "cea_end_buy":{
@@ -330,6 +330,58 @@
                                     "score_adquirente": 75,
                                     "historico_cliente": "novo"
                                 }
+                            },
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"8- Finaliza validação gateway",
+                    "id": "gateway_final",
+                    "services": {
+                        "gateway_final_paypal":{
+                            "name": "PAYPAL",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/paypal/end",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "status_antifraude": "FIND(action_outputs.rudder_payment_analisys_antifraud.status_antifraude)"
+                            },
+                            "output": {}
+                        },
+                        "gateway_final_pagarme":{
+                            "name": "Pagar.me",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/pagarme/end",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "status_antifraude": "FIND(action_outputs.rudder_payment_analisys_antifraud.status_antifraude)"
                             },
                             "output": {}
                         }
@@ -598,7 +650,7 @@
             "id": "transporter",
             "activities":[
                 {
-                    "name":"9- Realizar Entrega pela transportadora",
+                    "name":"10- Realizar Entrega pela transportadora",
                     "id": "receive_data_payment_fromvalidationt",
                     "services": {
                         "delivery_item_correios":{
