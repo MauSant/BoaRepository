@@ -43,7 +43,13 @@
                                     "validade": "12/2025"
                                 }
                             },
-                            "output": {}
+                            "output": {
+                                "cartao_token": "TOKEN-CC-14b47f82-16a3-4a1d-b310-79ab8350583b",
+                                "transacao_id": "TXN-cea-188e12bf-69b9-4333-bf51-c738f35460b0",
+                                "cliente_id": "FIND(cliente.id)",
+                                "pedido_id": "FIND(pedido_id)",
+                                "valor": "FIND(valor_total)"
+                            }
                         },
                         "riachuelo_process_payment_data":{
                             "name": "Riachuelo",
@@ -78,7 +84,13 @@
                                     "validade": "12/2025"
                                 }
                             },
-                            "output": {}
+                            "output": {
+                                "cartao_token": "TOKEN-CC-14b47f82-16a3-4a1d-b310-79ab8350583b",
+                                "transacao_id": "TXN-cea-188e12bf-69b9-4333-bf51-c738f35460b0",
+                                "cliente_id": "FIND(cliente.id)",
+                                "pedido_id": "FIND(pedido_id)",
+                                "valor": "FIND(valor_total)"
+                            }
                         }
                     }
                 },
@@ -105,8 +117,8 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
                                 "endereco_entrega": {
                                     "cep": "22000-000",
                                     "logradouro": "Rua Exemplo, 123"
@@ -115,7 +127,10 @@
                                     {"produto_id": "PROD-001", "quantidade": 2}
                                 ]
                             },
-                            "output": {}
+                            "output": {
+                                "id_entrega": "ENT-cea-29406a0a-2c60-446d-9d6f-894641d18f3b",
+                                "pedido_id": "FIND(pedido_id)"
+                            }
                         },
                         "riachuelo_delivery_product":{
                             "name": "Riachuelo",
@@ -136,8 +151,8 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
                                 "endereco_entrega": {
                                     "cep": "22000-000",
                                     "logradouro": "Rua Exemplo, 123"
@@ -146,7 +161,10 @@
                                     {"produto_id": "PROD-001", "quantidade": 2}
                                 ]
                             },
-                            "output": {}
+                            "output": {
+                                "id_entrega": "ENT-cea-29406a0a-2c60-446d-9d6f-894641d18f3b",
+                                "pedido_id": "FIND(pedido_id)"
+                            }
                         }
                     }
                 },
@@ -173,11 +191,14 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
-                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
-                                "status_entrega": "FIND(action_outputs.delivery_item_correios.status)"
+                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
+                                "status_entrega": "FIND(action_outputs.delivery_item.status)"
                             },
-                            "output": {}
+                            "output": {
+                                "output": "site atualizado",
+                                "status": "FIND(status_entrega)"
+                            }
                         },
                         "riachuelo_end_buy":{
                             "name": "Riachuelo",
@@ -198,11 +219,15 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
-                                "pedido_id": "FIND(action_outputs.cea_process_payment_data.pedido_id)",
+                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
                                 "status_entrega": "FIND(action_outputs.delivery_item_correios.status"
                             },
-                            "output": {}
+                            "output": {
+                                "output": "site atualizado",
+                                "status": "FIND(status_entrega)"
+                            }
+                            
                         }
                     }
                 }
@@ -237,12 +262,19 @@
                             "form_data": {},
                             "json": {
                                 "gateway_request_id": "GW-paypal-20230617",
-                                "transacao_id": "FIND(action_outputs.cea_process_payment_data.transacao_id)",
+                                "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)",
                                 "valor": 1500.00,
-                                "cartao_token": "FIND(action_outputs.cea_process_payment_data.cartao_token)",
+                                "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
                                 "parcelas": 3
                             },
-                            "output": {}
+                            "output": {
+                                "detalhes": {
+                                "transacao_origem": "FIND(transacao_id)",
+                                "valor_parcelado": 500
+                                },
+                                "id_gateway": "GW-paypal-61025ad1-ee9a-4332-8ff9-beb930843ab0",
+                                "status": "pendente_validacao"
+                            }
                         },
                         "pagarme_gateway_processing":{
                             "name": "Pagar.me",
@@ -264,12 +296,19 @@
                             "form_data": {},
                             "json": {
                                 "gateway_request_id": "GW-pagarme-20230617",
-                                "transacao_id": "FIND(action_outputs.cea_process_payment_data.transacao_id)",
+                                "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)",
                                 "valor": 1500.00,
-                                "cartao_token": "FIND(action_outputs.cea_process_payment_data.cartao_token)",
+                                "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
                                 "parcelas": 3
                             },
-                            "output": {}
+                            "output": {
+                                "detalhes": {
+                                "transacao_origem": "FIND(transacao_id)",
+                                "valor_parcelado": 500
+                                },
+                                "id_gateway": "GW-paypal-61025ad1-ee9a-4332-8ff9-beb930843ab0",
+                                "status": "pendente_validacao"
+                            }
                         }
                     }
                 },
@@ -296,14 +335,17 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
-                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation_Bradesco.codigo_autorizacao_final)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
+                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation.codigo_autorizacao_final)",
                                 "dados_risco": {
                                     "score_adquirente": 75,
                                     "historico_cliente": "novo"
                                 }
                             },
-                            "output": {}
+                            "output": {
+                                "id_analise_gateway": "ANALY-paypal-edfdd8b8-8e8b-474f-8496-7eacef7c1f90",
+                                "status_preliminar": "aprovado"
+                            }
                         },
                         "gateway_analysis_pagarme":{
                             "name": "Pagar.me",
@@ -324,14 +366,17 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
-                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation_Bradesco.codigo_autorizacao_final)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
+                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation.codigo_autorizacao_final)",
                                 "dados_risco": {
                                     "score_adquirente": 75,
                                     "historico_cliente": "novo"
                                 }
                             },
-                            "output": {}
+                            "output": {
+                                "id_analise_gateway": "ANALY-paypal-edfdd8b8-8e8b-474f-8496-7eacef7c1f90",
+                                "status_preliminar": "aprovado"
+                            }
                         }
                     }
                 },
@@ -358,9 +403,11 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "status_antifraude": "FIND(action_outputs.rudder_payment_analisys_antifraud.status_antifraude)"
+                                "status_antifraude": "FIND(action_outputs.payment_analysis_antifraud.status_antifraude)"
                             },
-                            "output": {}
+                            "output": {
+                                "output": "Validação completa"
+                            }
                         },
                         "gateway_final_pagarme":{
                             "name": "Pagar.me",
@@ -381,9 +428,11 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "status_antifraude": "FIND(action_outputs.rudder_payment_analisys_antifraud.status_antifraude)"
+                                "status_antifraude": "FIND(action_outputs.payment_analysis_antifraud.status_antifraude)"
                             },
-                            "output": {}
+                            "output": {
+                                "output": "Validação completa"
+                            }
                         }
                     }
                 }
@@ -418,10 +467,14 @@
                             "form_data": {},
                             "json": {
                                 "requisicao_adquirente": "ADQ-REQ-4455",
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
                                 "valor": 1500.00
                             },
-                            "output": {}
+                            "output": {
+                                "autorizacao_adq": "AUTH-9dd5e114-43a9-4b05-9248-fdd6e57cf257",
+                                "codigo_resposta_adq": "00",
+                                "id_gateway": "FIND(id_gateway)"
+                            }
                         },
                         "stone_validate_payment":{
                             "name": "STONE",
@@ -443,10 +496,14 @@
                             "form_data": {},
                             "json": {
                                 "requisicao_adquirente": "ADQ-REQ-4455",
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
                                 "valor": 1500.00
                             },
-                            "output": {}
+                            "output": {
+                                "autorizacao_adq": "AUTH-9dd5e114-43a9-4b05-9248-fdd6e57cf257",
+                                "codigo_resposta_adq": "00",
+                                "id_gateway": "FIND(id_gateway)"
+                            }
                         }
                     }
                 }
@@ -481,11 +538,15 @@
                             "form_data": {},
                             "json": {
                                 "requisicao_antifraude": "AF-REQ-7788",
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
                                 "email_cliente": "cliente@exemplo.com",
                                 "ip": "189.222.111.44"
                             },
-                            "output": {}
+                            "output": {
+                                "recomendacao": "liberar",
+                                "score_risco": 20,
+                                "status_antifraude": "aprovado"
+                            }
                         },
                         "netrin_payment_analisys_antifraud":{
                             "name": "NETRIN",
@@ -507,11 +568,15 @@
                             "form_data": {},
                             "json": {
                                 "requisicao_antifraude": "AF-REQ-7788",
-                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
                                 "email_cliente": "cliente@exemplo.com",
                                 "ip": "189.222.111.44"
                             },
-                            "output": {}
+                            "output": {
+                                "recomendacao": "liberar",
+                                "score_risco": 10,
+                                "status_antifraude": "aprovado"
+                            }
                         }
                     }
                 }
@@ -547,10 +612,13 @@
                             "form_data": {},
                             "json": {
                                 "requisicao_bandeira": "BAND-REQ-6677",
-                                "codigo_autorizacao": "FIND(action_outputs.cielo_validate_payment.autorizacao_adq)",
+                                "codigo_autorizacao": "FIND(action_outputs.validate_payment.autorizacao_adq)",
                                 "dados_cartao": "TOKEN-CC-5566"
                             },
-                            "output": {}
+                            "output": {
+                                "autorizacao_bandeira": "AUTH-BAND-d80bcbce-6cb9-4e95-a087-317669d68238",
+                                "status_bandeira": "aprovado"
+                            }
                         },
                         "mastercard_flag_alalysis":{
                             "name": "MASTERCARD",
@@ -572,10 +640,13 @@
                             "form_data": {},
                             "json":{
                                 "requisicao_bandeira": "BAND-REQ-6677",
-                                "codigo_autorizacao": "FIND(action_outputs.cielo_validate_payment.autorizacao_adq)",
+                                "codigo_autorizacao": "FIND(action_outputs.validate_payment.autorizacao_adq)",
                                 "dados_cartao": "TOKEN-CC-5566"
                             },
-                            "output": {}
+                            "output": {
+                                "autorizacao_bandeira": "AUTH-BAND-d80bcbce-6cb9-4e95-a087-317669d68238",
+                                "status_bandeira": "aprovado"
+                            }
                         }
                     }
                 }
@@ -589,7 +660,7 @@
             "activities":[
                 {
                     "name":"5- validação do pagamento pelo Emissor",
-                    "id": "issuing_validation_",
+                    "id": "issuing_validation",
                     "services": {
                         "issuing_validation_Bradesco":{
                             "name": "BRADESCO",
@@ -611,10 +682,13 @@
                             "form_data": {},
                             "json": {
                                 "requisicao_emissor": "EMI-REQ-9911",
-                                "autorizacao_bandeira": "FIND(action_outputs.visa_flag_alalysis.autorizacao_bandeira)",
+                                "autorizacao_bandeira": "FIND(action_outputs.flag_alalysis.autorizacao_bandeira)",
                                 "valor_parcela": 500.00
                             },
-                            "output": {}
+                            "output": {
+                                "codigo_autorizacao_final": "AUTH-bradesco-7a254f5f-86db-46ff-8752-25c56cd7ab96",
+                                "status_emissor": "aprovado"
+                            }
                         },
                         "issuing_validation_santander":{
                             "name": "SANTANDER",
@@ -636,10 +710,13 @@
                             "form_data": {},
                             "json": {
                                 "requisicao_emissor": "EMI-REQ-9911",
-                                "autorizacao_bandeira": "FIND(action_outputs.visa_flag_alalysis.autorizacao_bandeira)",
+                                "autorizacao_bandeira": "FIND(action_outputs.flag_alalysis.autorizacao_bandeira)",
                                 "valor_parcela": 500.00
                             },
-                            "output": {}
+                            "output": {
+                                "codigo_autorizacao_final": "AUTH-bradesco-7a254f5f-86db-46ff-8752-25c56cd7ab96",
+                                "status_emissor": "aprovado"
+                            }
                         }
                     }
                 }
@@ -651,7 +728,7 @@
             "activities":[
                 {
                     "name":"10- Realizar Entrega pela transportadora",
-                    "id": "receive_data_payment_fromvalidationt",
+                    "id": "delivery_item",
                     "services": {
                         "delivery_item_correios":{
                             "name": "CORREIOS",
@@ -672,13 +749,18 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
                                 "dimensoes": {
                                     "peso_kg": 0.5,
                                     "largura_cm": 20
                                 }
                             },
-                            "output": {}
+                            "output": {
+                                "codigo_rastreio": "TRACK-correios-c8fcd284-c72f-45b1-af1d-5ad0efa215f9",
+                                "id_entrega": "FIND(id_entrega)",
+                                "previsao_entrega": "2025-07-06",
+                                "status": "entregue"
+                            }
                         },
                         "delivery_item_loggi":{
                             "name": "LOGGI",
@@ -699,17 +781,21 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
                                 "dimensoes": {
                                     "peso_kg": 0.5,
                                     "largura_cm": 20
                                 }
                             },
-                            "output": {}
+                            "output": {
+                                "codigo_rastreio": "TRACK-correios-c8fcd284-c72f-45b1-af1d-5ad0efa215f9",
+                                "id_entrega": "FIND(id_entrega)",
+                                "previsao_entrega": "2025-07-06",
+                                "status": "entregue"
+                            }
                         }
                     }
                 }
-             
                 
             ]
         }

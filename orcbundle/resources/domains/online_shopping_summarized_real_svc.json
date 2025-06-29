@@ -1,0 +1,718 @@
+{
+    "name": "Online Shopping",
+    "id": "online_shopping_summerized",
+    "roles": [
+        {
+            "name":"Loja Virtual",
+            "id": "virtual_store",
+            "activities":[
+                {
+                    "name":"1-Processamento do pagamento pela Loja virtual",
+                    "id": "process_payment_data",
+                    "services": {
+                        "cea_process_payment_data":{
+                            "name": "C & A",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/cea/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "pedido_id": "ORD-12345",
+                                "valor_total": 1500.00,
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
+                                ],
+                                "cliente": {
+                                    "id": "CLI-7788",
+                                    "email": "cliente@exemplo.com"
+                                },
+                                "cartao": {
+                                    "numero": "**** **** **** 1234",
+                                    "validade": "12/2025"
+                                }
+                            },
+                            "output": {}
+                        },
+                        "riachuelo_process_payment_data":{
+                            "name": "Riachuelo",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/riachuelo/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "pedido_id": "ORD-12345",
+                                "valor_total": 1500.00,
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
+                                ],
+                                "cliente": {
+                                    "id": "CLI-7788",
+                                    "email": "cliente@exemplo.com"
+                                },
+                                "cartao": {
+                                    "numero": "**** **** **** 1234",
+                                    "validade": "12/2025"
+                                }
+                            },
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"9- Realizar entrega pela Loja Online",
+                    "id": "delivery_product",
+                    "services": {
+                        "cea_delivery_product":{
+                            "name": "C & A",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/cea/delivery_product",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "endereco_entrega": {
+                                    "cep": "22000-000",
+                                    "logradouro": "Rua Exemplo, 123"
+                                },
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
+                                ]
+                            },
+                            "output": {}
+                        },
+                        "riachuelo_delivery_product":{
+                            "name": "Riachuelo",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/riachuelo/delivery_product",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "endereco_entrega": {
+                                    "cep": "22000-000",
+                                    "logradouro": "Rua Exemplo, 123"
+                                },
+                                "itens": [
+                                    {"produto_id": "PROD-001", "quantidade": 2}
+                                ]
+                            },
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"11- Finalizar Compra",
+                    "id": "end_buy",
+                    "services": {
+                        "cea_end_buy":{
+                            "name": "C & A",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/cea/end_buy",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
+                                "status_entrega": "FIND(action_outputs.delivery_item_correios.status)"
+                            },
+                            "output": {}
+                        },
+                        "riachuelo_end_buy":{
+                            "name": "Riachuelo",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/riachuelo/end_buy",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
+                                "status_entrega": "FIND(action_outputs.delivery_item_correios.status"
+                            },
+                            "output": {}
+                        }
+                    }
+                }
+              
+            ]
+        },
+        {
+            "name":"Gateway de Pagamento",
+            "id": "payment_gateway",
+            "activities":[
+                {
+                    "name":"2- Processamento do Pagamento pelo gateway",
+                    "id": "gateway_processing",
+                    "services": {
+                        "paypal_gateway_processing":{
+                            "name": "PAYPAL",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/paypal/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "gateway_request_id": "GW-paypal-20230617",
+                                "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)",
+                                "valor": 1500.00,
+                                "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
+                                "parcelas": 3
+                            },
+                            "output": {}
+                        },
+                        "pagarme_gateway_processing":{
+                            "name": "Pagar.me",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/pagarme/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "gateway_request_id": "GW-pagarme-20230617",
+                                "transacao_id": "FIND(action_outputs.cea_process_payment_data.transacao_id)",
+                                "valor": 1500.00,
+                                "cartao_token": "FIND(action_outputs.cea_process_payment_data.cartao_token)",
+                                "parcelas": 3
+                            },
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"6- Analise do Pagamento pelo Gateway",
+                    "id": "gateway_analysis",
+                    "services": {
+                        "gateway_analysis_paypal":{
+                            "name": "PAYPAL",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/paypal/analysis",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation_Bradesco.codigo_autorizacao_final)",
+                                "dados_risco": {
+                                    "score_adquirente": 75,
+                                    "historico_cliente": "novo"
+                                }
+                            },
+                            "output": {}
+                        },
+                        "gateway_analysis_pagarme":{
+                            "name": "Pagar.me",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/paypal/analysis",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation_Bradesco.codigo_autorizacao_final)",
+                                "dados_risco": {
+                                    "score_adquirente": 75,
+                                    "historico_cliente": "novo"
+                                }
+                            },
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"8- Finaliza validação gateway",
+                    "id": "gateway_final",
+                    "services": {
+                        "gateway_final_paypal":{
+                            "name": "PAYPAL",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/paypal/end",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "status_antifraude": "FIND(action_outputs.rudder_payment_analisys_antifraud.status_antifraude)"
+                            },
+                            "output": {}
+                        },
+                        "gateway_final_pagarme":{
+                            "name": "Pagar.me",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/pagarme/end",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "status_antifraude": "FIND(action_outputs.rudder_payment_analisys_antifraud.status_antifraude)"
+                            },
+                            "output": {}
+                        }
+                    }
+                }
+               
+            ]
+        },
+        {
+            "name":"Adquirente",
+            "id": "acquirer",
+            "activities":[
+                {
+                    "name":"3- Validação do Pagamento Pelo Adquirente",
+                    "id": "validate_payment",
+                    "services": {
+                        "cielo_validate_payment":{
+                            "name": "CIELO",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/aquirer/cielo/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "requisicao_adquirente": "ADQ-REQ-4455",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "valor": 1500.00
+                            },
+                            "output": {}
+                        },
+                        "stone_validate_payment":{
+                            "name": "STONE",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/aquirer/stone/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "requisicao_adquirente": "ADQ-REQ-4455",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "valor": 1500.00
+                            },
+                            "output": {}
+                        }
+                    }
+                }
+                              
+            ]
+        },
+        {
+            "name":"Antifraude",
+            "id": "anti_fraud",
+            "activities":[
+                {
+                    "name":"7- Analise do pagamento pelo antifraude",
+                    "id": "payment_analysis_antifraud",
+                    "services": {
+                        "rudder_payment_analisys_antifraud":{
+                            "name": "RUDDER",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/atifraud/rudder/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "requisicao_antifraude": "AF-REQ-7788",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "email_cliente": "cliente@exemplo.com",
+                                "ip": "189.222.111.44"
+                            },
+                            "output": {}
+                        },
+                        "netrin_payment_analisys_antifraud":{
+                            "name": "NETRIN",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/atifraud/netrin/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "requisicao_antifraude": "AF-REQ-7788",
+                                "id_gateway": "FIND(action_outputs.paypal_gateway_processing.id_gateway)",
+                                "email_cliente": "cliente@exemplo.com",
+                                "ip": "189.222.111.44"
+                            },
+                            "output": {}
+                        }
+                    }
+                }
+               
+                
+            ]
+        },
+        {
+            "name":"Bandeira",
+            "id": "flag",
+            "activities":[
+                {
+                    "name":"4- Validação do Pagamento pela bandeira",
+                    "id": "flag_alalysis",
+                    "services": {
+                        "visa_flag_alalysis":{
+                            "name": "VISA",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/flag/visa/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "requisicao_bandeira": "BAND-REQ-6677",
+                                "codigo_autorizacao": "FIND(action_outputs.cielo_validate_payment.autorizacao_adq)",
+                                "dados_cartao": "TOKEN-CC-5566"
+                            },
+                            "output": {}
+                        },
+                        "mastercard_flag_alalysis":{
+                            "name": "MASTERCARD",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/flag/mastercard/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json":{
+                                "requisicao_bandeira": "BAND-REQ-6677",
+                                "codigo_autorizacao": "FIND(action_outputs.cielo_validate_payment.autorizacao_adq)",
+                                "dados_cartao": "TOKEN-CC-5566"
+                            },
+                            "output": {}
+                        }
+                    }
+                }
+                
+                
+            ]
+        },
+        {
+            "name":"Emissor",
+            "id": "issuing",
+            "activities":[
+                {
+                    "name":"5- validação do pagamento pelo Emissor",
+                    "id": "issuing_validation_",
+                    "services": {
+                        "issuing_validation_Bradesco":{
+                            "name": "BRADESCO",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/issuing/bradesco/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "requisicao_emissor": "EMI-REQ-9911",
+                                "autorizacao_bandeira": "FIND(action_outputs.visa_flag_alalysis.autorizacao_bandeira)",
+                                "valor_parcela": 500.00
+                            },
+                            "output": {}
+                        },
+                        "issuing_validation_santander":{
+                            "name": "SANTANDER",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/issuing/santander/validate_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "requisicao_emissor": "EMI-REQ-9911",
+                                "autorizacao_bandeira": "FIND(action_outputs.visa_flag_alalysis.autorizacao_bandeira)",
+                                "valor_parcela": 500.00
+                            },
+                            "output": {}
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name":"Transportadora",
+            "id": "transporter",
+            "activities":[
+                {
+                    "name":"10- Realizar Entrega pela transportadora",
+                    "id": "receive_data_payment_fromvalidationt",
+                    "services": {
+                        "delivery_item_correios":{
+                            "name": "CORREIOS",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/transporter/correios/delivery_item",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "dimensoes": {
+                                    "peso_kg": 0.5,
+                                    "largura_cm": 20
+                                }
+                            },
+                            "output": {}
+                        },
+                        "delivery_item_loggi":{
+                            "name": "LOGGI",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/transporter/loggi/delivery_item",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "id_entrega": "FIND(action_outputs.cea_delivery_product.id_entrega)",
+                                "dimensoes": {
+                                    "peso_kg": 0.5,
+                                    "largura_cm": 20
+                                }
+                            },
+                            "output": {}
+                        }
+                    }
+                }
+             
+                
+            ]
+        }
+    ]
+
+}
