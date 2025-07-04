@@ -1,5 +1,5 @@
 {
-    "name": "Online Shopping",
+    "name": "Compra Online",
     "id": "online_shopping_summerized",
     "roles": [
         {
@@ -13,11 +13,11 @@
                         "cea_process_payment_data":{
                             "name": "C & A",
                             "metadata": {
-                                "description": "Checa o credito de um Usuario",
+                                "description": "Exemplo de entrada de dados de usuario",
                                 "user_inputs": [
                                     {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
+                                        "name": "exemplo123",
+                                        "description": "O name será usado como chave para acessar o valor"
                                     }
                                 ]
                             },

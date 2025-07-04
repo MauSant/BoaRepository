@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from orcbundle.routers.bundle_router import bundle_router
-from orcbundle.routers.theorc_router import theorc_router
+from orcbundle.routers.boa_simulator_router import boa_simulator_router
 from orcbundle.routers.domain_router import domain_router
 
 
@@ -18,8 +18,8 @@ app = FastAPI(
     title="Boa Repository"
 )
 
-app.include_router(bundle_router)
-app.include_router(theorc_router)
+# app.include_router(bundle_router)
+app.include_router(boa_simulator_router)
 app.include_router(domain_router)
 
 

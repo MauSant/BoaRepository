@@ -6,21 +6,21 @@ from orcbundle.services.domain_crud import domain_crud
 from orcbundle.models.domain import Domain
 
 domain_router = APIRouter(
-    prefix="/domains",
+    prefix="/bpdl",
     responses={404: {"description": "Not found"}},
-    tags=["domain"]
+    tags=["bpdl"]
 )
 
 @domain_router.get("/",)
 async def read_domain(file_name):
-    domain = domain_crud.read_one(file_name=id)
-    e = Domain.model_validate(domain)
-    return domain
+    bpdl = domain_crud.read_one(file_name=id)
+    e = Domain.model_validate(bpdl)
+    return bpdl
 
 @domain_router.get("/all",)
 async def read_all_domain():
-    domains = domain_crud.read_all()
-    return domains
+    bpdls = domain_crud.read_all()
+    return bpdls
 
 
 # @domain_router.post("/",)
