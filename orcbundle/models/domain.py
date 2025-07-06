@@ -19,4 +19,5 @@ class Role(BaseModel):
 class Domain(BaseModel):
     name: str
     id: str
+    ref: str
     roles: list[Role]
