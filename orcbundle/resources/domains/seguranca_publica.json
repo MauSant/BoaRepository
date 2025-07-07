@@ -4,15 +4,15 @@
     "ref": "https://drive.google.com/file/d/10Qmdm2PLtZrInrNrbdNktKHTMLz8ukYX/view?usp=drive_link",
     "roles": [
         {
-            "name":"Loja Virtual",
-            "id": "virtual_store",
+            "name":"Integrador",
+            "id": "integrator",
             "activities":[
                 {
-                    "name":"1-Processamento do pagamento pela Loja virtual",
-                    "id": "process_payment_data",
+                    "name":"1-Solicitar Inclusão na Rede de Colaboradores",
+                    "id": "request_inclusion_colab_net",
                     "services": {
-                        "cea_process_payment_data":{
-                            "name": "C & A",
+                        "sinesp_request_inclusion_colab_net":{
+                            "name": "SINESP",
                             "metadata": {
                                 "description": "Exemplo de entrada de dados de usuario",
                                 "user_inputs": [
@@ -23,228 +23,264 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/cea/process_payment",
+                            "url": "http://localhost:8003/virtual_store/sinesp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "pedido_id": "ORD-12345",
-                                "valor_total": 1500.00,
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ],
-                                "cliente": {
-                                    "id": "CLI-7788",
-                                    "email": "cliente@exemplo.com"
-                                },
-                                "cartao": {
-                                    "numero": "**** **** **** 1234",
-                                    "validade": "12/2025"
-                                }
+                                "nomeOrganizacao": "Detran",
+                                "cnpj": "12.345.678/0001-99",
+                                "responsavel": "João Silva",
+                                "email": "joao@segurancatotal.com",
+                                "telefone": "(xx) 98xx5-xx21"
                             },
                             "output": {
-                                "cartao_token": "TOKEN-CC-14b47f82-16a3-4a1d-b310-79ab8350583b",
-                                "transacao_id": "TXN-cea-188e12bf-69b9-4333-bf51-c738f35460b0",
-                                "cliente_id": "FIND(cliente.id)",
-                                "pedido_id": "FIND(pedido_id)",
-                                "valor": "FIND(valor_total)"
-                            }
-                        },
-                        "riachuelo_process_payment_data":{
-                            "name": "Riachuelo",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/riachuelo/process_payment",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "pedido_id": "ORD-12345",
-                                "valor_total": 1500.00,
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ],
-                                "cliente": {
-                                    "id": "CLI-7788",
-                                    "email": "cliente@exemplo.com"
-                                },
-                                "cartao": {
-                                    "numero": "**** **** **** 1234",
-                                    "validade": "12/2025"
-                                }
-                            },
-                            "output": {
-                                "cartao_token": "TOKEN-CC-14b47f82-16a3-4a1d-b310-79ab8350583b",
-                                "transacao_id": "TXN-cea-188e12bf-69b9-4333-bf51-c738f35460b0",
-                                "cliente_id": "FIND(cliente.id)",
-                                "pedido_id": "FIND(pedido_id)",
-                                "valor": "FIND(valor_total)"
+                                "solicitacaoId": "SOL-20230715-001",
+                                "protocolo": "PRT-20230715-78901",
+                                "status": "Pendente",
+                                "mensagem": "Solicitação recebida para análise"
                             }
                         }
                     }
                 },
                 {
-                    "name":"9- Realizar entrega pela Loja Online",
-                    "id": "delivery_product",
+                    "name":"2b-Enviar Informações Complementares",
+                    "id": "sent_compl_info",
                     "services": {
-                        "cea_delivery_product":{
-                            "name": "C & A",
+                        "sinesp_sent_compl_info":{
+                            "name": "SINESP",
                             "metadata": {
-                                "description": "Checa o credito de um Usuario",
+                                "description": "Exemplo de entrada de dados de usuario",
                                 "user_inputs": [
                                     {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
+                                        "name": "exemplo123",
+                                        "description": "O name será usado como chave para acessar o valor"
                                     }
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/cea/delivery_product",
+                            "url": "http://localhost:8003/virtual_store/sinesp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "endereco_entrega": {
-                                    "cep": "22000-000",
-                                    "logradouro": "Rua Exemplo, 123"
-                                },
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ]
+                                "nomeOrganizacao": "Detran",
+                                "cnpj": "12.345.678/0001-99",
+                                "responsavel": "João Silva",
+                                "email": "joao@segurancatotal.com",
+                                "telefone": "(xx) 98xx5-xx21"
                             },
                             "output": {
-                                "id_entrega": "ENT-cea-29406a0a-2c60-446d-9d6f-894641d18f3b",
-                                "pedido_id": "FIND(pedido_id)"
-                            }
-                        },
-                        "riachuelo_delivery_product":{
-                            "name": "Riachuelo",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/riachuelo/delivery_product",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "endereco_entrega": {
-                                    "cep": "22000-000",
-                                    "logradouro": "Rua Exemplo, 123"
-                                },
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ]
-                            },
-                            "output": {
-                                "id_entrega": "ENT-cea-29406a0a-2c60-446d-9d6f-894641d18f3b",
-                                "pedido_id": "FIND(pedido_id)"
+                                "solicitacaoId": "SOL-20230715-001",
+                                "protocolo": "PRT-addition-20230715-10978",
+                                "status": "Pendente",
+                                "mensagem": "Solicitação recebida para análise"
                             }
                         }
                     }
                 },
                 {
-                    "name":"11- Finalizar Compra",
-                    "id": "end_buy",
+                    "name":"4-Enviar Termo de Adesão Assinado",
+                    "id": "sent_adhesion_sign",
                     "services": {
-                        "cea_end_buy":{
-                            "name": "C & A",
+                        "sinesp_sent_adhesion_sign":{
+                            "name": "SINESP",
                             "metadata": {
-                                "description": "Checa o credito de um Usuario",
+                                "description": "Exemplo de entrada de dados de usuario",
                                 "user_inputs": [
                                     {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
+                                        "name": "exemplo123",
+                                        "description": "O name será usado como chave para acessar o valor"
                                     }
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/cea/end_buy",
+                            "url": "http://localhost:8003/virtual_store/sinesp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "status_entrega": "FIND(action_outputs.delivery_item.status)"
+                                "termoAdesaoId": "FIND(action_outputs.request_adhesion_term.termoAdesaoId)",
+                                "documento": "JVBERi0xLjUK... (base64)",
+                                "hashAssinatura": "a1b2c3d4e5f6"
                             },
                             "output": {
-                                "output": "site atualizado",
-                                "status": "FIND(status_entrega)"
+                                "credencialAcesso": "CRED-INTEG-2023-555",
+                                "tokenAcesso": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                                "validadeToken": "2024-07-15"
                             }
-                        },
-                        "riachuelo_end_buy":{
-                            "name": "Riachuelo",
+                        }
+                    }
+                },
+                {
+                    "name":"5-Solicitar Documentação de Adesão de Colaborador",
+                    "id": "request_adhesion_doc_colab",
+                    "services": {
+                        "sinesp_request_adhesion_doc":{
+                            "name": "SINESP",
                             "metadata": {
-                                "description": "Checa o credito de um Usuario",
+                                "description": "Exemplo de entrada de dados de usuario",
                                 "user_inputs": [
                                     {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
+                                        "name": "exemplo123",
+                                        "description": "O name será usado como chave para acessar o valor"
                                     }
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/riachuelo/end_buy",
+                            "url": "http://localhost:8003/virtual_store/sinesp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "status_entrega": "FIND(action_outputs.delivery_item_correios.status"
+                                "credencialAcesso": "FIND(action_outputs.sent_adhesion_sign.credencialAcesso)",
+                                "colaboradores": [
+                                    {
+                                    "nome": "Carlos Santos",
+                                    "cpf": "123.456.789-00",
+                                    "funcao": "Operador de Monitoramento"
+                                    }
+                                ]
                             },
                             "output": {
-                                "output": "site atualizado",
-                                "status": "FIND(status_entrega)"
+                                "solicitacaoColaboradorId": "SOL-COL-20230715-888",
+                                "termosPendentes": [
+                                    {
+                                    "colaboradorId": "COL-001",
+                                    "termoId": "TERMO-COL-001"
+                                    }
+                                ]
                             }
-                            
+                        }
+                    }
+                },
+                {
+                    "name":"6-Solicitar Inclusão de Colaborador",
+                    "id": "request_inclusion_colab",
+                    "services": {
+                        "sinesp_request_adhesion_doc_colab":{
+                            "name": "SINESP",
+                            "metadata": {
+                                "description": "Exemplo de entrada de dados de usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "exemplo123",
+                                        "description": "O name será usado como chave para acessar o valor"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/sinesp/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "credencialColaborador": "FIND(action_outputs.sent_adhesion_sign_colab.credencialColaborador)",
+                                "equipamentos": [
+                                    {
+                                    "tipo": "Câmera IP",
+                                    "modelo": "AXIS P1448-LE",
+                                    "localizacao": "-23.550520, -46.633308"
+                                    }
+                                ]
+                            },
+                            "output":{
+                                "colaboradorId": "COL-001",
+                                "autorizacoes": ["transmissao_imagens", "alertas"],
+                                "tokenDispositivo": "TOK-DEV-555-001"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name":"8-Transmitir Imagens das Câmeras",
+                    "id": "stream_cam",
+                    "services": {
+                        "sinesp_stream_cam":{
+                            "name": "SINESP",
+                            "metadata": {
+                                "description": "Exemplo de entrada de dados de usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "exemplo123",
+                                        "description": "O name será usado como chave para acessar o valor"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/sinesp/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "tokenDispositivo": "TOK-DEV-555-001",
+                                "canalTransmissao": "FIND(action_outputs.analisys_doc_colab.canaisTransmissao)",
+                                "metadados": {
+                                    "timestamp": "2023-07-15T14:30:00Z",
+                                    "localizacao": "-23.550520, -46.633308",
+                                    "identificadorCamera": "CAM-555-01"
+                                },
+                                "dadosImagem": "H264_VIDEO_STREAM_DATA"
+                            },
+                            "output": {
+                                "transmissaoId": "TRANS-20230715-999",
+                                "timestampRecebimento": "2023-07-15T14:30:05Z",
+                                "statusAnalise": "pendente"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name":"8a-Enviar Informações Complementares sobre Colaborador",
+                    "id": "sent_colab_info",
+                    "services": {
+                        "sinesp_sent_colab_info":{
+                            "name": "SINESP",
+                            "metadata": {
+                                "description": "Exemplo de entrada de dados de usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "exemplo123",
+                                        "description": "O name será usado como chave para acessar o valor"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/virtual_store/sinesp/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
                         }
                     }
                 }
-              
             ]
         },
         {
-            "name":"Gateway de Pagamento",
-            "id": "payment_gateway",
+            "name":"SSP",
+            "id": "ssp",
             "activities":[
                 {
-                    "name":"2- Processamento do Pagamento pelo gateway",
-                    "id": "gateway_processing",
+                    "name":"2-Analisar Documentação do Integrador",
+                    "id": "analisys_doc_integrator",
                     "services": {
-                        "paypal_gateway_processing":{
-                            "name": "PAYPAL",
+                        "sspba_analisys_doc_integrator":{
+                            "name": "SSP-BA",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -255,30 +291,33 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/gateway_payment/paypal/process_payment",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "gateway_request_id": "GW-paypal-20230617",
-                                "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)",
-                                "valor": 1500.00,
-                                "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
-                                "parcelas": 3
+                                "protocolo": "FIND(action_outputs.request_inclusion_colab_net)",
+                                "aprovado": true,
+                                "analista": "Maria Oliveira",
+                                "observacoes": "Documentação completa e válida"
                             },
                             "output": {
-                                "detalhes": {
-                                "transacao_origem": "FIND(transacao_id)",
-                                "valor_parcelado": 500
-                                },
-                                "id_gateway": "GW-paypal-61025ad1-ee9a-4332-8ff9-beb930843ab0",
-                                "status": "pendente_validacao"
+                                "termoAdesaoId": "TERMO-001",
+                                "codigoVerificacao": "CV-5X9P8R2T",
+                                "validade": "2023-12-31",
+                                "proximoPasso": "Solicitar assinatura do termo"
                             }
-                        },
-                        "pagarme_gateway_processing":{
-                            "name": "Pagar.me",
+                        }
+                    }
+                },
+                 {
+                    "name":"2a-Solicitar Informações Complementares",
+                    "id": "request_more_info",
+                    "services": {
+                        "sspba_request_more_info":{
+                            "name": "SSP-BA",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -289,36 +328,59 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/gateway_payment/pagarme/process_payment",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {},
+                            "output": {}
+                        }
+                    }
+                },
+                {
+                    "name":"3-Solicitar Assinatura do Termo de Adesão",
+                    "id": "request_adhesion_term",
+                    "services": {
+                        "sspba_request_adhesion_term":{
+                            "name": "SSP-BA",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "gateway_request_id": "GW-pagarme-20230617",
-                                "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)",
-                                "valor": 1500.00,
-                                "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
-                                "parcelas": 3
+                                "termoAdesaoId": "FIND(action_outputs.analisys_doc_integrator.termoAdesaoId)",
+                                "canalNotificacao": "email",
+                                "destinatario": "joao@segurancatotal.com"
                             },
                             "output": {
-                                "detalhes": {
-                                "transacao_origem": "FIND(transacao_id)",
-                                "valor_parcelado": 500
-                                },
-                                "id_gateway": "GW-paypal-61025ad1-ee9a-4332-8ff9-beb930843ab0",
-                                "status": "pendente_validacao"
+                                "solicitacaoAssinaturaId": "SIG-20230715-555",
+                                "linkAssinatura": "https://api.ssp.gov.br/termos/assinatura/TERMO-001",
+                                "expiracao": "2023-07-22T23:59:59Z",
+                                "termoAdesaoId": "FIND(termoAdesaoId)"
                             }
                         }
                     }
                 },
                 {
-                    "name":"6- Analise do Pagamento pelo Gateway",
-                    "id": "gateway_analysis",
+                    "name":"7-Analisar Documentação do Colaborador",
+                    "id": "analisys_doc_colab",
                     "services": {
-                        "gateway_analysis_paypal":{
-                            "name": "PAYPAL",
+                        "sspba_analisys_doc_colab":{
+                            "name": "SSP-BA",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -329,64 +391,32 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/gateway_payment/paypal/analysis",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation.codigo_autorizacao_final)",
-                                "dados_risco": {
-                                    "score_adquirente": 75,
-                                    "historico_cliente": "novo"
-                                }
+                                "colaboradorId": "FIND(action_outputs.request_inclusion_colab.colaboradorId)",
+                                "aprovado": true,
+                                "restricoes": [],
+                                "observacoes": "Credenciamento aprovado sem ressalvas"
                             },
                             "output": {
-                                "id_analise_gateway": "ANALY-paypal-edfdd8b8-8e8b-474f-8496-7eacef7c1f90",
-                                "status_preliminar": "aprovado"
-                            }
-                        },
-                        "gateway_analysis_pagarme":{
-                            "name": "Pagar.me",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/gateway_payment/paypal/analysis",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "autorizacao_emissor": "FIND(action_outputs.issuing_validation.codigo_autorizacao_final)",
-                                "dados_risco": {
-                                    "score_adquirente": 75,
-                                    "historico_cliente": "novo"
-                                }
-                            },
-                            "output": {
-                                "id_analise_gateway": "ANALY-paypal-edfdd8b8-8e8b-474f-8496-7eacef7c1f90",
-                                "status_preliminar": "aprovado"
+                                "idCredencialAtiva": "CRED-ATIVA-COL-001",
+                                "niveisAcesso": ["nivel3"],
+                                "canaisTransmissao": ["rtsp://stream.ssp.gov.br/COL-001"]
                             }
                         }
                     }
                 },
                 {
-                    "name":"8- Finaliza validação gateway",
-                    "id": "gateway_final",
+                    "name":"9-Analisar Imagens de cameras",
+                    "id": "analisys_cam",
                     "services": {
-                        "gateway_final_paypal":{
-                            "name": "PAYPAL",
+                        "sspba_analisys_cam":{
+                            "name": "SSP-BA",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -397,21 +427,32 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/gateway_payment/paypal/end",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "status_antifraude": "FIND(action_outputs.payment_analysis_antifraud.status_antifraude)"
+                                "transmissaoId": "FIND(action_outputs.stream_cam.transmissaoId)",
+                                "algoritmos": ["reconhecimento_facial", "detecao_armas"]
                             },
                             "output": {
-                                "output": "Validação completa"
+                                "incidenteId": "INC-20230715-777",
+                                "tipoIncidente": "agressao_fisica",
+                                "nivelGravidade": 3,
+                                "coordenadas": "-23.550520, -46.633308",
+                                "timestamp": "2023-07-15T14:31:22Z"
                             }
-                        },
-                        "gateway_final_pagarme":{
-                            "name": "Pagar.me",
+                        }
+                    }
+                },
+                {
+                    "name":"9a-Acionar Polícia Militar",
+                    "id": "call_military_police",
+                    "services": {
+                        "sspba_call_military_police":{
+                            "name": "SSP-BA",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -422,34 +463,110 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/gateway_payment/pagarme/end",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "status_antifraude": "FIND(action_outputs.payment_analysis_antifraud.status_antifraude)"
+                                "incidenteId": "FIND(action_outputs.analisys_cam.incidenteId)",
+                                "prioridade": "alta",
+                                "unidadesProximas": ["5º BPM", "ROTAM"],
+                                "detalhes": "Dois indivíduos em confronto físico, possível arma branca"
                             },
                             "output": {
-                                "output": "Validação completa"
+                                "protocoloOcorrencia": "OC-20230715-456",
+                                "codigoVerificacao": "CV-PM-789",
+                                "recursosAcionados": ["viatura_555", "suporte_tatico"]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name":"9b-Acionar Bombeiros",
+                    "id": "call_fireman",
+                    "services": {
+                        "sspba_call_fireman":{
+                            "name": "SSP-BA",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "incidenteId": "FIND(action_outputs.analisys_cam.incidenteId)",
+                                "prioridade": "alta",
+                                "unidadesProximas": ["5º BPM", "ROTAM"],
+                                "detalhes": "Dois indivíduos em confronto físico, possível arma branca"
+                            },
+                            "output": {
+                                "protocoloOcorrencia": "OC-20230715-456",
+                                "codigoVerificacao": "CV-PM-789",
+                                "recursosAcionados": ["viatura_555", "suporte_tatico"]
+                            }
+                        }
+                    }
+                },
+                {
+                    "name":"9c-Acionar Polícia Civil",
+                    "id": "call_civil_police",
+                    "services": {
+                        "sspba_call_civil_police":{
+                            "name": "SSP-BA",
+                            "metadata": {
+                                "description": "Checa o credito de um Usuario",
+                                "user_inputs": [
+                                    {
+                                        "name": "id",
+                                        "description": "Id do usuario que se deseja verificar credito"
+                                    }
+                                ]
+                            },
+                            "action_type": "HTTP",
+                            "url": "http://localhost:8003/gateway_payment/ssp/process_payment",
+                            "http_method": "POST",
+                            "mock": {},
+                            "headers": {},
+                            "query": {},
+                            "form_data": {},
+                            "json": {
+                                "incidenteId": "FIND(action_outputs.analisys_cam.incidenteId)",
+                                "prioridade": "alta",
+                                "unidadesProximas": ["5º BPM", "ROTAM"],
+                                "detalhes": "Dois indivíduos em confronto físico, possível arma branca"
+                            },
+                            "output": {
+                                "protocoloOcorrencia": "OC-20230715-456",
+                                "codigoVerificacao": "CV-PM-789",
+                                "recursosAcionados": ["viatura_555", "suporte_tatico"]
                             }
                         }
                     }
                 }
-               
             ]
         },
         {
-            "name":"Adquirente",
-            "id": "acquirer",
+            "name":"Colaborador",
+            "id": "colab",
             "activities":[
                 {
-                    "name":"3- Validação do Pagamento Pelo Adquirente",
-                    "id": "validate_payment",
+                    "name":"5a-Enviar Termo de Adesão Assinado",
+                    "id": "sent_adhesion_sign_colab",
                     "services": {
-                        "cielo_validate_payment":{
-                            "name": "CIELO",
+                        "detran_sent_adhesion_sign":{
+                            "name": "Detran",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -467,60 +584,32 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "requisicao_adquirente": "ADQ-REQ-4455",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "valor": 1500.00
+                                "termoId": "FIND(action_outputs.request_adhesion_doc_colab.termosPendentes)",
+                                "colaboradorId": "COL-001",
+                                "documento": "JVBERi0xLjUK... (base64)",
+                                "hashAssinatura": "x9y8z7w6v5u"
                             },
                             "output": {
-                                "autorizacao_adq": "AUTH-9dd5e114-43a9-4b05-9248-fdd6e57cf257",
-                                "codigo_resposta_adq": "00",
-                                "id_gateway": "FIND(id_gateway)"
-                            }
-                        },
-                        "stone_validate_payment":{
-                            "name": "STONE",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/aquirer/stone/validate_payment",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "requisicao_adquirente": "ADQ-REQ-4455",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "valor": 1500.00
-                            },
-                            "output": {
-                                "autorizacao_adq": "AUTH-9dd5e114-43a9-4b05-9248-fdd6e57cf257",
-                                "codigo_resposta_adq": "00",
-                                "id_gateway": "FIND(id_gateway)"
+                                "credencialColaborador": "CRED-COL-001",
+                                "status": "Documento validado"
                             }
                         }
+                      
                     }
                 }
                               
             ]
         },
         {
-            "name":"Antifraude",
-            "id": "anti_fraud",
+            "name":"Polícia Militar",
+            "id": "military_police",
             "activities":[
                 {
-                    "name":"7- Analise do pagamento pelo antifraude",
-                    "id": "payment_analysis_antifraud",
+                    "name":"10a-Acionar Equipe Médica",
+                    "id": "request_med_team",
                     "services": {
-                        "rudder_payment_analisys_antifraud":{
-                            "name": "RUDDER",
+                        "milit_police_request_med_team":{
+                            "name": "Polícia Militar",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -531,70 +620,39 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/atifraud/rudder/validate_payment",
+                            "url": "http://localhost:8003/aquirer/cielo/validate_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "requisicao_antifraude": "AF-REQ-7788",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "email_cliente": "cliente@exemplo.com",
-                                "ip": "189.222.111.44"
+                                "protocoloOcorrencia": "FIND(action_outputs.call_military_police.protocoloOcorrencia)",
+                                "tipoAssistencia": "trauma",
+                                "vitimas": 1,
+                                "condicoes": "ferimento_perfurante"
                             },
                             "output": {
-                                "recomendacao": "liberar",
-                                "score_risco": 20,
-                                "status_antifraude": "aprovado"
-                            }
-                        },
-                        "netrin_payment_analisys_antifraud":{
-                            "name": "NETRIN",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/atifraud/netrin/validate_payment",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "requisicao_antifraude": "AF-REQ-7788",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "email_cliente": "cliente@exemplo.com",
-                                "ip": "189.222.111.44"
-                            },
-                            "output": {
-                                "recomendacao": "liberar",
-                                "score_risco": 10,
-                                "status_antifraude": "aprovado"
+                                "codigoAtendimentoMedico": "SAMU-20230715-333",
+                                "unidadesAcionadas": ["US-555", "SuporteAvancado"]
                             }
                         }
+                      
                     }
                 }
-               
-                
+                              
             ]
         },
         {
-            "name":"Bandeira",
-            "id": "flag",
+            "name":"Polícia Civil",
+            "id": "civil_police",
             "activities":[
                 {
-                    "name":"4- Validação do Pagamento pela bandeira",
-                    "id": "flag_alalysis",
+                    "name":"10c-Acionar Equipe Médica",
+                    "id": "request_med_team_civil",
                     "services": {
-                        "visa_flag_alalysis":{
-                            "name": "VISA",
+                        "civil_police_request_med_team":{
+                            "name": "Polícia Civil",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -605,66 +663,33 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/flag/visa/validate_payment",
+                            "url": "http://localhost:8003/aquirer/cielo/validate_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "requisicao_bandeira": "BAND-REQ-6677",
-                                "codigo_autorizacao": "FIND(action_outputs.validate_payment.autorizacao_adq)",
-                                "dados_cartao": "TOKEN-CC-5566"
                             },
                             "output": {
-                                "autorizacao_bandeira": "AUTH-BAND-d80bcbce-6cb9-4e95-a087-317669d68238",
-                                "status_bandeira": "aprovado"
-                            }
-                        },
-                        "mastercard_flag_alalysis":{
-                            "name": "MASTERCARD",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/flag/mastercard/validate_payment",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json":{
-                                "requisicao_bandeira": "BAND-REQ-6677",
-                                "codigo_autorizacao": "FIND(action_outputs.validate_payment.autorizacao_adq)",
-                                "dados_cartao": "TOKEN-CC-5566"
-                            },
-                            "output": {
-                                "autorizacao_bandeira": "AUTH-BAND-d80bcbce-6cb9-4e95-a087-317669d68238",
-                                "status_bandeira": "aprovado"
                             }
                         }
+                      
                     }
                 }
-                
-                
+                              
             ]
         },
         {
-            "name":"Emissor",
-            "id": "issuing",
+            "name":"Corpo de Bombeiros",
+            "id": "firedepartment",
             "activities":[
                 {
-                    "name":"5- validação do pagamento pelo Emissor",
-                    "id": "issuing_validation",
+                    "name":"10b-Acionar Equipe Médica",
+                    "id": "request_med_team_civil",
                     "services": {
-                        "issuing_validation_Bradesco":{
-                            "name": "BRADESCO",
+                        "firedepartment_request_med":{
+                            "name": "Corpo de Bombeiros",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -675,64 +700,33 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/issuing/bradesco/validate_payment",
+                            "url": "http://localhost:8003/aquirer/cielo/validate_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "requisicao_emissor": "EMI-REQ-9911",
-                                "autorizacao_bandeira": "FIND(action_outputs.flag_alalysis.autorizacao_bandeira)",
-                                "valor_parcela": 500.00
                             },
                             "output": {
-                                "codigo_autorizacao_final": "AUTH-bradesco-7a254f5f-86db-46ff-8752-25c56cd7ab96",
-                                "status_emissor": "aprovado"
-                            }
-                        },
-                        "issuing_validation_santander":{
-                            "name": "SANTANDER",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/issuing/santander/validate_payment",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "requisicao_emissor": "EMI-REQ-9911",
-                                "autorizacao_bandeira": "FIND(action_outputs.flag_alalysis.autorizacao_bandeira)",
-                                "valor_parcela": 500.00
-                            },
-                            "output": {
-                                "codigo_autorizacao_final": "AUTH-bradesco-7a254f5f-86db-46ff-8752-25c56cd7ab96",
-                                "status_emissor": "aprovado"
                             }
                         }
+                      
                     }
                 }
+                              
             ]
         },
         {
-            "name":"Transportadora",
-            "id": "transporter",
+            "name":"SAMU",
+            "id": "samu",
             "activities":[
                 {
-                    "name":"10- Realizar Entrega pela transportadora",
-                    "id": "delivery_item",
+                    "name":"11-Acionar Hospital",
+                    "id": "request_hospital",
                     "services": {
-                        "delivery_item_correios":{
-                            "name": "CORREIOS",
+                        "samu_request_hospital":{
+                            "name": "SAMU",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -743,28 +737,42 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/transporter/correios/delivery_item",
+                            "url": "http://localhost:8003/aquirer/cielo/validate_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
-                                "dimensoes": {
-                                    "peso_kg": 0.5,
-                                    "largura_cm": 20
+                                "codigoAtendimentoMedico": "FIND(action_outputs.request_med_team.codigoAtendimentoMedico)",
+                                "hospitalDestino": "HOSPITAL_CENTRAL",
+                                "dadosPaciente": {
+                                    "condicao": "estavel",
+                                    "procedimentosRealizados": ["curativo_compressivo"]
                                 }
                             },
                             "output": {
-                                "codigo_rastreio": "TRACK-correios-c8fcd284-c72f-45b1-af1d-5ad0efa215f9",
-                                "id_entrega": "FIND(id_entrega)",
-                                "previsao_entrega": "2025-07-06",
-                                "status": "entregue"
+                                "protocoloHospitalar": "HOSP-20230715-222",
+                                "leitoDestino": "Emergência 05",
+                                "medicoResponsavel": "Dr. Silva"
                             }
-                        },
-                        "delivery_item_loggi":{
-                            "name": "LOGGI",
+                        }
+                      
+                    }
+                }
+                              
+            ]
+        },
+        {
+            "name":"Hospital",
+            "id": "hospital",
+            "activities":[
+                {
+                    "name":"12-Enviar Resposta",
+                    "id": "hospital_response",
+                    "services": {
+                        "cielo_validate_payment":{
+                            "name": "Hospital",
                             "metadata": {
                                 "description": "Checa o credito de um Usuario",
                                 "user_inputs": [
@@ -775,29 +783,28 @@
                                 ]
                             },
                             "action_type": "HTTP",
-                            "url": "http://localhost:8003/transporter/loggi/delivery_item",
+                            "url": "http://localhost:8003/aquirer/cielo/validate_payment",
                             "http_method": "POST",
                             "mock": {},
                             "headers": {},
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
-                                "dimensoes": {
-                                    "peso_kg": 0.5,
-                                    "largura_cm": 20
-                                }
+                                "protocoloHospitalar": "FIND(action_outputs.request_hospital.protocoloHospitalar)",
+                                "diagnostico": "Ferimento perfurante superficial",
+                                "procedimentos": ["sutura", "medicação"],
+                                "estadoPaciente": "estavel"
                             },
                             "output": {
-                                "codigo_rastreio": "TRACK-correios-c8fcd284-c72f-45b1-af1d-5ad0efa215f9",
-                                "id_entrega": "FIND(id_entrega)",
-                                "previsao_entrega": "2025-07-06",
-                                "status": "entregue"
+                                "encerramentoOcorrencia": "OC-20230715-456",
+                                "codigoFinalizacao": "FIM-20230715-001",
+                                "relatorioConsolidado": "https://api.hospitalcentral.gov.br/relatorios/HOSP-20230715-222"
                             }
                         }
+                      
                     }
                 }
-                
+                              
             ]
         }
     ]

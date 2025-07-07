@@ -12,7 +12,7 @@
                     "id": "process_payment_data",
                     "services": {
                         "cea_process_payment_data":{
-                            "name": "C & A",
+                            "name": "loja Mau",
                             "metadata": {
                                 "description": "Exemplo de entrada de dados de usuario",
                                 "user_inputs": [
@@ -31,209 +31,16 @@
                             "form_data": {},
                             "json": {
                                 "pedido_id": "ORD-12345",
-                                "valor_total": 1500.00,
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ],
-                                "cliente": {
-                                    "id": "CLI-7788",
-                                    "email": "cliente@exemplo.com"
-                                },
-                                "cartao": {
-                                    "numero": "**** **** **** 1234",
-                                    "validade": "12/2025"
-                                }
+                                "compra_id":"ddas-4141",
+                                "cliente_id": "CLI-7788"
                             },
                             "output": {
                                 "cartao_token": "TOKEN-CC-14b47f82-16a3-4a1d-b310-79ab8350583b",
-                                "transacao_id": "TXN-cea-188e12bf-69b9-4333-bf51-c738f35460b0",
-                                "cliente_id": "FIND(cliente.id)",
-                                "pedido_id": "FIND(pedido_id)",
-                                "valor": "FIND(valor_total)"
-                            }
-                        },
-                        "riachuelo_process_payment_data":{
-                            "name": "Riachuelo",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/riachuelo/process_payment",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "pedido_id": "ORD-12345",
-                                "valor_total": 1500.00,
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ],
-                                "cliente": {
-                                    "id": "CLI-7788",
-                                    "email": "cliente@exemplo.com"
-                                },
-                                "cartao": {
-                                    "numero": "**** **** **** 1234",
-                                    "validade": "12/2025"
-                                }
-                            },
-                            "output": {
-                                "cartao_token": "TOKEN-CC-14b47f82-16a3-4a1d-b310-79ab8350583b",
-                                "transacao_id": "TXN-cea-188e12bf-69b9-4333-bf51-c738f35460b0",
-                                "cliente_id": "FIND(cliente.id)",
-                                "pedido_id": "FIND(pedido_id)",
-                                "valor": "FIND(valor_total)"
+                                "transacao_id": "CONCAT(TXN-mau-188e12bf-69b9-4333-bf51-, FIND(cliente_id))"
                             }
                         }
+                        
                     }
-                },
-                {
-                    "name":"9- Realizar entrega pela Loja Online",
-                    "id": "delivery_product",
-                    "services": {
-                        "cea_delivery_product":{
-                            "name": "C & A",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/cea/delivery_product",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "endereco_entrega": {
-                                    "cep": "22000-000",
-                                    "logradouro": "Rua Exemplo, 123"
-                                },
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ]
-                            },
-                            "output": {
-                                "id_entrega": "ENT-cea-29406a0a-2c60-446d-9d6f-894641d18f3b",
-                                "pedido_id": "FIND(pedido_id)"
-                            }
-                        },
-                        "riachuelo_delivery_product":{
-                            "name": "Riachuelo",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/riachuelo/delivery_product",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "endereco_entrega": {
-                                    "cep": "22000-000",
-                                    "logradouro": "Rua Exemplo, 123"
-                                },
-                                "itens": [
-                                    {"produto_id": "PROD-001", "quantidade": 2}
-                                ]
-                            },
-                            "output": {
-                                "id_entrega": "ENT-cea-29406a0a-2c60-446d-9d6f-894641d18f3b",
-                                "pedido_id": "FIND(pedido_id)"
-                            }
-                        }
-                    }
-                },
-                {
-                    "name":"11- Finalizar Compra",
-                    "id": "end_buy",
-                    "services": {
-                        "cea_end_buy":{
-                            "name": "C & A",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/cea/end_buy",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "status_entrega": "FIND(action_outputs.delivery_item.status)"
-                            },
-                            "output": {
-                                "output": "site atualizado",
-                                "status": "FIND(status_entrega)"
-                            }
-                        },
-                        "riachuelo_end_buy":{
-                            "name": "Riachuelo",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/virtual_store/riachuelo/end_buy",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "id_entrega": "FIND(action_outputs.delivery_product.id_entrega)",
-                                "pedido_id": "FIND(action_outputs.process_payment_data.pedido_id)",
-                                "status_entrega": "FIND(action_outputs.delivery_item_correios.status"
-                            },
-                            "output": {
-                                "output": "site atualizado",
-                                "status": "FIND(status_entrega)"
-                            }
-                            
-                        }
-                    }
-                }
-              
-            ]
         },
         {
             "name":"Gateway de Pagamento",
@@ -264,42 +71,8 @@
                             "json": {
                                 "gateway_request_id": "GW-paypal-20230617",
                                 "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)",
-                                "valor": 1500.00,
                                 "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
-                                "parcelas": 3
-                            },
-                            "output": {
-                                "detalhes": {
-                                    "transacao_origem": "FIND(transacao_id)",
-                                    "valor_parcelado": 500
-                                },
-                                "id_gateway": "GW-paypal-61025ad1-ee9a-4332-8ff9-beb930843ab0",
-                                "status": "pendente_validacao"
-                            }
-                        },
-                        "pagarme_gateway_processing":{
-                            "name": "Pagar.me",
-                            "metadata": {
-                                "description": "Checa o credito de um Usuario",
-                                "user_inputs": [
-                                    {
-                                        "name": "id",
-                                        "description": "Id do usuario que se deseja verificar credito"
-                                    }
-                                ]
-                            },
-                            "action_type": "HTTP",
-                            "url": "http://localhost:8003/gateway_payment/pagarme/process_payment",
-                            "http_method": "POST",
-                            "mock": {},
-                            "headers": {},
-                            "query": {},
-                            "form_data": {},
-                            "json": {
-                                "gateway_request_id": "GW-pagarme-20230617",
-                                "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)",
                                 "valor": 1500.00,
-                                "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
                                 "parcelas": 3
                             },
                             "output": {
@@ -496,13 +269,14 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "transacao_origem": "FIND(action_outputs.gateway_processing.detalhes.transacao_origem)",
-                                "id_process": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "valor_parcelado": "FIND(action_outputs.gateway_processing.detalhes.valor_parcelado)"
+                                "requisicao_adquirente": "ADQ-REQ-4455",
+                                "id_gateway": "FIND(action_outputs.gateway_processing.id_gateway)",
+                                "valor": 1500.00
                             },
                             "output": {
                                 "autorizacao_adq": "AUTH-9dd5e114-43a9-4b05-9248-fdd6e57cf257",
-                                "gateway_ref": "FIND(id_process)"
+                                "codigo_resposta_adq": "00",
+                                "id_gateway": "FIND(id_gateway)"
                             }
                         }
                     }
