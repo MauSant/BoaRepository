@@ -1,16 +1,15 @@
 Loja online
 1- add 1 2
-2- create new svc 1.5 act id: encrypt!!!!!!!!!!!!
+2- create new svc 1.5 act id:  !!!!!!!!!!!!
 3- add to the new svc
 {
     "encrypt"
-   "json":
-   {
-    "token": "FIND(action_outputs.process_payment_data.cartao_token)"
-   }
-   "output":
-   {
-    "cartao_token":"CONCAT( FIND(token),  -, 4124, -, tokenizado)"
+
+   "json":{
+        "token": "FIND(action_outputs.process_payment_data.cartao_token)"
+   },
+   "output":   {
+        "cartao_token":"CONCAT( FIND(token),  -, 4124, -, tokenizado)"
    }
 }
 
@@ -18,23 +17,13 @@ Loja online
 4- add to step 2: inputs and outputs
 {
 
-    "json":
-    {
+    "json":    {
         "gateway_request_id": "GW-paypal-20230617",
-        "transacao_id": "FIND(action_outputs.encrypt.transacao_id)", <-----------------Change this manually
+        "transacao_id": "FIND(action_outputs.process_payment_data.transacao_id)", 
         "valor": 1500,
-        "cartao_token": "FIND(action_outputs.process_payment_data.cartao_token)",
+        "cartao_token": "FIND(action_outputs.encrypt.cartao_token)",
         "parcelas": 3
     }
 
-    "output":
-    {
-        "detalhes": {
-            "transacao_origem": "FIND(transacao_id)",
-            "valor_parcelado": 500
-        },
-        "id_gateway": "GW-paypal-61025ad1-ee9a-4332-8ff9-beb930843ab0",
-        "status": "pendente_validacao",
-        "cartao_token": "FIND(cartao_token)"
-    }
+ 
 }

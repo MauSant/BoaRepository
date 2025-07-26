@@ -12,7 +12,7 @@
                     "id": "process_payment_data",
                     "services": {
                         "cea_process_payment_data":{
-                            "name": "loja Mau",
+                            "name": "1- substituindo serviço",
                             "metadata": {
                                 "description": "Exemplo de entrada de dados de usuario",
                                 "user_inputs": [

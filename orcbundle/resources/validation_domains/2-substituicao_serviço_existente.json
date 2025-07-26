@@ -1,4 +1,16 @@
 1- Adquirente
 3- Carregar passo 1 2 3 
 2- trocar de CIELO para STONE
+
+
+substituir: stone para:[
+
+    "json":{
+        "transacao_origem": "FIND(action_outputs.gateway_processing.detalhes.transacao_origem)",
+        "id_process": "FIND(action_outputs.gateway_processing.id_gateway)",
+        "valor_parcelado": "FIND(action_outputs.gateway_processing.detalhes.valor_parcelado)"
+    }
+
+
+]
 END

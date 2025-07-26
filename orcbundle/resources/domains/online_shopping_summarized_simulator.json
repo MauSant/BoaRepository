@@ -303,10 +303,8 @@
                                 "parcelas": 3
                             },
                             "output": {
-                                "detalhes": {
                                 "transacao_origem": "FIND(transacao_id)",
-                                "valor_parcelado": 500
-                                },
+                                "valor_parcelado": 500,
                                 "id_gateway": "GW-paypal-61025ad1-ee9a-4332-8ff9-beb930843ab0",
                                 "status": "pendente_validacao"
                             }
@@ -496,9 +494,9 @@
                             "query": {},
                             "form_data": {},
                             "json": {
-                                "transacao_origem": "FIND(action_outputs.gateway_processing.detalhes.transacao_origem)",
+                                "transacao_origem": "FIND(action_outputs.gateway_processing.transacao_origem)",
                                 "id_process": "FIND(action_outputs.gateway_processing.id_gateway)",
-                                "valor_parcelado": "FIND(action_outputs.gateway_processing.detalhes.valor_parcelado)"
+                                "valor_parcelado": "FIND(action_outputs.gateway_processing.valor_parcelado)"
                             },
                             "output": {
                                 "autorizacao_adq": "AUTH-9dd5e114-43a9-4b05-9248-fdd6e57cf257",
