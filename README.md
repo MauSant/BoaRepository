@@ -1,5 +1,2 @@
-# OrcBundle
+# BOA Repository
 
-TODO: 
-
-- Add metadata to all services
